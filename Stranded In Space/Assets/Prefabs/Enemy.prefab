@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7296164514876234087}
   - component: {fileID: -6588243118501400747}
   - component: {fileID: 1921884673777391707}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,6 +109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1921884673777391707}
+  lifePoints: 25
+  game_object: {fileID: 7296164514876234086}
 --- !u!54 &1921884673777391707
 Rigidbody:
   m_ObjectHideFlags: 0

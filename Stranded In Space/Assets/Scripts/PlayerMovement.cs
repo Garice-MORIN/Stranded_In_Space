@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public Transform groundCheck;
     public LayerMask groundMask;
+    public Spawner spawner;
     public float groundDistance = 0.4f;
     public float gravity = -19.62f;
     public float jumpHeight = 2f;
@@ -18,8 +19,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         grounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-        if(grounded && velocity.y < 0)
+    //Gravité
+        if(grounded && velocity.y < 0) 
         {
             velocity.y = -2f;
         }
@@ -29,9 +30,9 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        if(Input.GetButtonDown("Run"))
+        if(Input.GetButtonDown("Run") && grounded)
         {
-            moveSpeed = Speed(speed);  // Check whether haracter is running or walking and change speed accordingly if he is on the ground
+            moveSpeed = Speed(speed);  // Verifie si personnage est sur le sol et change la vitesse le cas échéant
             speed = !speed;
         }
 
@@ -44,15 +45,22 @@ public class PlayerMovement : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        if(Input.GetButtonDown("Fire2")) //Spawn des ennemis /!\ Uniquement pour débug 
+        {
+            GameObject enemy = spawner.GetComponent<Spawner>().enemy;
+            Vector3 pos = spawner.GetComponent<Spawner>().spawnPoint.position;
+            Instantiate(enemy,pos,Quaternion.identity);
+        }
     }
 
     float Speed (bool speed)   
     {
-        if (speed && grounded)
+        if (speed)
         {
             return 5f;
         }
-        else if (!speed && grounded)
+        else if (!speed)
         {
             return 12f;
         }

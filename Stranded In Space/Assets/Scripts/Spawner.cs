@@ -7,13 +7,12 @@ public class Spawner : MonoBehaviour
     public Transform spawnPoint;
     public int waveSize;
     
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(Enemies());
     }
 
-    IEnumerator Enemies ()
+    public IEnumerator Enemies ()
     {
         while (waveSize > 0)
         {
@@ -21,6 +20,8 @@ public class Spawner : MonoBehaviour
             Instantiate(enemy, pos, Quaternion.identity);
             yield return new WaitForSeconds (0.5f);
             waveSize--;
+            //Crée x ennemis où x est la taille de la vague
         }
     }
+
 }

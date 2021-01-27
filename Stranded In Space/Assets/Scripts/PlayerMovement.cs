@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetButtonDown("Run") && grounded)
         {
-            moveSpeed = Speed(speed);  // Verifie si personnage est sur le sol et change la vitesse le cas échéant
+            moveSpeed = ChangeSpeed(speed);  // Verifie si personnage est sur le sol et change la vitesse le cas échéant
             speed = !speed;
         }
 
@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    float Speed (bool speed)   
+    float ChangeSpeed (bool speed)   
     {
         if (speed)
         {

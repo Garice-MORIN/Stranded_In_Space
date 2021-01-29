@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float gravity = -19.62f;
     public float jumpHeight = 2f;
 
+    public int life = 50;
+
     Vector3 velocity;
     bool grounded;
     bool speed;
@@ -51,6 +53,12 @@ public class PlayerMovement : MonoBehaviour
             GameObject enemy = spawner.GetComponent<Spawner>().enemy;
             Vector3 pos = spawner.GetComponent<Spawner>().spawnPoint.position;
             Instantiate(enemy,pos,Quaternion.identity);
+        }
+
+        if(Input.GetButtonDown("SpawnWave"))
+        {
+            spawner.GetComponent<Spawner>().waveNumber++;
+            spawner.GetComponent<Spawner>().SpawnOnClick();
         }
     }
 

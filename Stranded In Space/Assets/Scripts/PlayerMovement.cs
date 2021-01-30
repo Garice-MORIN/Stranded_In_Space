@@ -9,9 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public float gravity = -19.62f;
     public float jumpHeight = 2f;
-
     public int life = 50;
-
     Vector3 velocity;
     bool grounded;
     bool speed;

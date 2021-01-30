@@ -3,12 +3,10 @@
 public class EnemyMovement : MonoBehaviour
 {
     public Rigidbody enemy;
-    public int lifePoints = 25;
-    public GameObject game_object;
 
     void Update()
     {
-        //enemy.AddForce(200*Time.deltaTime,0,100*Time.deltaTime);
+        //enemy.AddForce(500*Time.deltaTime,0,500*Time.deltaTime);
     }
 
 }

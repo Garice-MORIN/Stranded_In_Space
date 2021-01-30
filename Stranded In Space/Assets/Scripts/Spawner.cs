@@ -32,7 +32,7 @@ public class Spawner : MonoBehaviour
         {
             Vector3 pos = listOfSpawns[Random.Range(0,listOfSpawns.Length)];
             Instantiate(ChooseEnemy(Random.Range(0,1)), pos, Quaternion.identity);
-            yield return new WaitForSeconds (0.5f);
+            yield return new WaitForSeconds (0.003f);
             t--;
             //Crée x ennemis où x est la taille de la vague
         }

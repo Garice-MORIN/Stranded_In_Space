@@ -13,7 +13,23 @@ public class PlayerController : NetworkBehaviour
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
     public ParticleSystem gunParticle;
+    //public float mouseSensitivity = 1250f;
+    public CharacterController controller;
+    public Transform groundCheck;
+    //public Transform playerBody;
 
+    //float xRotation; // = 0f;
+    float currentSpeed = 5f;
+    bool isGrounded;
+    Vector3 velocity;
+    float gravity = -19.62f;
+    float jumpHeight = 2f;
+
+
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     void Update()
     {
         if(!isLocalPlayer)
@@ -21,15 +37,69 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
-        var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;      
-        var z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
+        isGrounded = Physics.CheckSphere(groundCheck.position,0.2f,mask);
 
-        transform.Rotate(0, x, 0);
-        transform.Translate(0, 0, z);
+        if(isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
 
+        /*____________________________MOUSE CAMERA________________________________*/
+
+        if(Input.GetButtonDown("Cursor"))
+        {
+            ChangeCursorLockState(); //Change the state of the cursor
+        }
+
+        /*___________________________MOVEMENTS____________________________________*/
+
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+        Vector3 move = transform.right * x + transform.forward * z;
+
+        controller.Move(move*currentSpeed*Time.deltaTime);
+
+        if(Input.GetButtonDown("Run") && isGrounded)
+        {
+            ChangeSpeed();
+        }
+
+        if(Input.GetButtonDown("Jump") && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+        velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
+
+        /*_______________________________PEW PEW_____________________________*/
         if(Input.GetButtonDown("Fire1"))
         {
             CmdFire();
+        }  
+    }
+
+   void ChangeCursorLockState()
+    {
+        if(Cursor.lockState == CursorLockMode.None)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
+
+    void ChangeSpeed()
+    {
+        if(currentSpeed == 5f)
+        {
+            currentSpeed = 12f;
+        }
+        else
+        {
+            currentSpeed = 5f;
         }
     }
 
@@ -80,4 +150,5 @@ public class PlayerController : NetworkBehaviour
             myAudioListener.enabled = true;
         }
     }
+
 }

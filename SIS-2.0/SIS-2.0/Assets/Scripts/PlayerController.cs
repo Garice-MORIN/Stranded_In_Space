@@ -6,6 +6,7 @@ using Mirror;
 public class PlayerController : NetworkBehaviour
 {
     public Camera myCam;
+    //public CameraBis camerabis;
     public AudioListener myAudioListener;
     public LayerMask mask;
     public Transform MeleeRangeCheck;
@@ -34,6 +35,7 @@ public class PlayerController : NetworkBehaviour
     {
         if(!isLocalPlayer)
         {
+            gameObject.GetComponentInChildren<CameraBis>().enabled = false;
             return;
         }
 

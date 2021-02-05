@@ -59,37 +59,37 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11278}
+      Script: {instanceID: 11272}
     - Class: 114
-      Script: {instanceID: 11352}
+      Script: {instanceID: 11346}
     - Class: 114
-      Script: {instanceID: 11444}
+      Script: {instanceID: 11438}
     - Class: 114
-      Script: {instanceID: 11472}
+      Script: {instanceID: 11466}
     - Class: 114
-      Script: {instanceID: 11534}
+      Script: {instanceID: 11528}
     - Class: 114
-      Script: {instanceID: 11910}
+      Script: {instanceID: 11904}
     - Class: 114
-      Script: {instanceID: 11942}
+      Script: {instanceID: 11936}
     - Class: 114
-      Script: {instanceID: 12008}
+      Script: {instanceID: 12002}
     - Class: 114
-      Script: {instanceID: 12318}
+      Script: {instanceID: 12312}
     - Class: 114
-      Script: {instanceID: 12928}
+      Script: {instanceID: 12922}
     - Class: 114
-      Script: {instanceID: 13076}
+      Script: {instanceID: 13070}
     - Class: 114
-      Script: {instanceID: 13136}
+      Script: {instanceID: 13130}
     - Class: 114
-      Script: {instanceID: 13282}
+      Script: {instanceID: 13276}
     - Class: 114
-      Script: {instanceID: 13316}
+      Script: {instanceID: 13310}
     - Class: 114
-      Script: {instanceID: 13544}
+      Script: {instanceID: 13538}
     - Class: 114
-      Script: {instanceID: 13628}
+      Script: {instanceID: 13622}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 136
@@ -429,7 +429,7 @@ ScriptsOnlyBuild:
     className: MultiplexTransport
   - hash:
       serializedVersion: 2
-      Hash: 655675a941ea756088027703b43352a4
+      Hash: 73654110166f93e7345f065fb6f44810
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraBis

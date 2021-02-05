@@ -8,18 +8,15 @@ public class CameraBis : MonoBehaviour
     public Transform playerBody;
 
     float xRotation = 0f;
+    public bool cursor;
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked; //Verrouille le curseur au milieu de l'écran
+        CheckForCursor(cursor);
     }
 
     void Update()
     {
-        /*if(!isLocalPlayer)
-        {
-            return;
-        }*/
 
         if(Cursor.lockState == CursorLockMode.Locked)
         {
@@ -33,6 +30,18 @@ public class CameraBis : MonoBehaviour
             playerBody.Rotate(Vector3.up * mouseX * Time.deltaTime);
         }
         
+    }
+
+    void CheckForCursor(bool state)
+    {
+        if(state)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;           
+        }
     }
 
 }

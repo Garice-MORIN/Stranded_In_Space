@@ -29,13 +29,15 @@ public class PlayerController : NetworkBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        gameObject.GetComponentInChildren<CameraBis>().cursor = false;
     }
     void Update()
     {
         if(!isLocalPlayer)
         {
-            gameObject.GetComponentInChildren<CameraBis>().enabled = false;
+            /*gameObject.GetComponentInChildren<CameraBis>().enabled = false;
+            gameObject.GetComponent<PlayerController>().enabled = false;*/
+            gameObject.GetComponentInChildren<CameraBis>().cursor = false;
             return;
         }
 

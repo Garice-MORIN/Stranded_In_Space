@@ -7,7 +7,9 @@ ScriptsOnlyBuild:
     - CameraRotate
     - EnemiesSpawner
     - Health
+    - Interface
     - PlayerController
+    - test
     Mirror.Components.dll:
     - Mirror.NetworkTransform
     Mirror.dll:
@@ -27,6 +29,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scenes/SampleScene.unity:
     - Class: 1
@@ -60,6 +63,8 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
+      Script: {instanceID: 11246}
+    - Class: 114
       Script: {instanceID: 11272}
     - Class: 114
       Script: {instanceID: 11346}
@@ -74,9 +79,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11936}
     - Class: 114
-      Script: {instanceID: 12004}
+      Script: {instanceID: 12002}
     - Class: 114
-      Script: {instanceID: 12314}
+      Script: {instanceID: 12312}
+    - Class: 114
+      Script: {instanceID: 12422}
     - Class: 114
       Script: {instanceID: 12924}
     - Class: 114
@@ -92,8 +99,12 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13624}
     - Class: 114
-      Script: {instanceID: 14760}
+      Script: {instanceID: 14890}
+    - Class: 114
+      Script: {instanceID: 20520}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 135
       Script: {instanceID: 0}
@@ -632,6 +643,12 @@ ScriptsOnlyBuild:
     className: NetworkLerpRigidbody
   - hash:
       serializedVersion: 2
+      Hash: 85589ab6a7a28ece36b7fab8d19805aa
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EnemiesSpawner
+  - hash:
+      serializedVersion: 2
       Hash: b18f0d55b218ff8d17c2c7411b02c1bf
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.NetworkRoom
@@ -1106,10 +1123,16 @@ ScriptsOnlyBuild:
     className: KcpTransport
   - hash:
       serializedVersion: 2
-      Hash: 85589ab6a7a28ece36b7fab8d19805aa
+      Hash: 916faceee77e349c86aa3a431ede19f0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: EnemiesSpawner
+    className: Interface
+  - hash:
+      serializedVersion: 2
+      Hash: 6fd2bb55b3ee5edb6040a1c5bccd0e07
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: test
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

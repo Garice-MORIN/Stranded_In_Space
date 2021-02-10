@@ -155,7 +155,6 @@ MonoBehaviour:
   syncInterval: 0.1
   enemyPrefab: {fileID: 170188676883244103, guid: 4a90ef062a8401f4da9cb0a9c31bbf68,
     type: 3}
-  spawner: {fileID: 171282257}
   enemiesNumber: 10
 --- !u!114 &171282256
 MonoBehaviour:

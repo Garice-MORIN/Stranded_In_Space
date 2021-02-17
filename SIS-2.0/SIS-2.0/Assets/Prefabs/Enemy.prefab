@@ -99,7 +99,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 100
   playerBody: {fileID: 170188676883244101}
-  cursor: 1
 --- !u!1 &170188676883244103
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,8 +115,6 @@ GameObject:
   - component: {fileID: 170188676883244125}
   - component: {fileID: 5752760688260127470}
   - component: {fileID: 3111447899568599590}
-  - component: {fileID: 3697268631685965342}
-  - component: {fileID: 2955283797849204264}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Player
@@ -237,7 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  clientAuthority: 1
+  clientAuthority: 0
   localPositionSensitivity: 0.01
   localRotationSensitivity: 0.01
   localScaleSensitivity: 0.01
@@ -273,52 +270,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3697268631685965342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170188676883244103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf30007be8fc8844ead57a05529aa3c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  axes: 1
-  sensitivityX: 15
-  sensitivityY: 15
-  minimumX: -360
-  maximumX: 360
-  minimumY: -60
-  maximumY: 60
---- !u!114 &2955283797849204264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170188676883244103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85d389677ac1f5a4682dce2fc0711e7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  myCam: {fileID: 170188676306621510}
-  myAudioListener: {fileID: 170188676306621511}
-  mask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  MeleeRangeCheck: {fileID: 4072762246074504319}
-  gunRange: 100000
-  bulletPrefab: {fileID: 8582630242344631816, guid: 13526dc160a496548ba9d4924ce049cd,
-    type: 3}
-  bulletSpawn: {fileID: 0}
-  gunParticle: {fileID: 0}
-  controller: {fileID: 3111447899568599590}
-  groundCheck: {fileID: 3930623051382581684}
 --- !u!1 &624283177714911131
 GameObject:
   m_ObjectHideFlags: 0

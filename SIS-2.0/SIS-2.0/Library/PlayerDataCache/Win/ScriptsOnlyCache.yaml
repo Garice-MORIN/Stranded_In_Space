@@ -4,14 +4,15 @@ ScriptsOnlyBuild:
     - Billboard
     - Bullet
     - CameraBis
-    - CameraRotate
     - EnemiesSpawner
     - Health
     - Interface
     - PlayerController
-    - test
     Mirror.Components.dll:
     - Mirror.NetworkTransform
+    - Mirror.NetworkTransformChild
+    Mirror.Editor.dll:
+    - Mirror.NetworkBehaviourInspector
     Mirror.dll:
     - Mirror.NetworkIdentity
     - Mirror.NetworkManager
@@ -77,31 +78,29 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11904}
     - Class: 114
-      Script: {instanceID: 11936}
+      Script: {instanceID: 11938}
     - Class: 114
-      Script: {instanceID: 12002}
+      Script: {instanceID: 12004}
     - Class: 114
-      Script: {instanceID: 12312}
+      Script: {instanceID: 12314}
     - Class: 114
-      Script: {instanceID: 12422}
+      Script: {instanceID: 12424}
     - Class: 114
-      Script: {instanceID: 12924}
+      Script: {instanceID: 12838}
     - Class: 114
-      Script: {instanceID: 13072}
+      Script: {instanceID: 13082}
     - Class: 114
-      Script: {instanceID: 13132}
+      Script: {instanceID: 13142}
     - Class: 114
-      Script: {instanceID: 13278}
+      Script: {instanceID: 13288}
     - Class: 114
-      Script: {instanceID: 13312}
+      Script: {instanceID: 13322}
     - Class: 114
-      Script: {instanceID: 13540}
+      Script: {instanceID: 13456}
     - Class: 114
-      Script: {instanceID: 13624}
+      Script: {instanceID: 13550}
     - Class: 114
-      Script: {instanceID: 14890}
-    - Class: 114
-      Script: {instanceID: 20520}
+      Script: {instanceID: 13634}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -445,7 +444,7 @@ ScriptsOnlyBuild:
     className: MultiplexTransport
   - hash:
       serializedVersion: 2
-      Hash: 73654110166f93e7345f065fb6f44810
+      Hash: 655675a941ea756088027703b43352a4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraBis
@@ -583,7 +582,7 @@ ScriptsOnlyBuild:
     className: MatchGUI
   - hash:
       serializedVersion: 2
-      Hash: 152c13d53c3e05160475494edd6c1ceb
+      Hash: 4e129143b091db92d44b7dae8a5eaeaa
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -811,6 +810,12 @@ ScriptsOnlyBuild:
     className: AddForce
   - hash:
       serializedVersion: 2
+      Hash: 916faceee77e349c86aa3a431ede19f0
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Interface
+  - hash:
+      serializedVersion: 2
       Hash: 9e12720e9f1df1639263519e77f2c4d7
     assemblyName: Mirror.Components.dll
     namespaceName: Mirror.Experimental
@@ -827,12 +832,6 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.Examples.Cloud.GUI.dll
     namespaceName: Mirror.Cloud.Example
     className: ServerListUIItem
-  - hash:
-      serializedVersion: 2
-      Hash: a4ab9532686dbd13bc2c5bb58a3781ce
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: CameraRotate
   - hash:
       serializedVersion: 2
       Hash: 1088b99d0c88ca05dcb48022854c0cd7
@@ -1121,18 +1120,6 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.dll
     namespaceName: kcp2k
     className: KcpTransport
-  - hash:
-      serializedVersion: 2
-      Hash: 916faceee77e349c86aa3a431ede19f0
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Interface
-  - hash:
-      serializedVersion: 2
-      Hash: 6fd2bb55b3ee5edb6040a1c5bccd0e07
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: test
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

@@ -6,7 +6,6 @@ using Mirror;
 public class PlayerController : NetworkBehaviour
 {
     public Camera myCam;
-    //public CameraBis camerabis;
     public AudioListener myAudioListener;
     public LayerMask mask;
     public Transform MeleeRangeCheck;
@@ -14,87 +13,86 @@ public class PlayerController : NetworkBehaviour
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
     public ParticleSystem gunParticle;
-    //public float mouseSensitivity = 1250f;
     public CharacterController controller;
     public Transform groundCheck;
-    //public Transform playerBody;
+    public Transform playerBody;
 
-    //float xRotation; // = 0f;
     float currentSpeed = 5f;
     bool isGrounded;
     Vector3 velocity;
     float gravity = -19.62f;
     float jumpHeight = 2f;
 
-
-    void Start()
-    {
-        gameObject.GetComponentInChildren<CameraBis>().cursor = false;
-    }
     void Update()
     {
         if(!isLocalPlayer)
         {
-            /*gameObject.GetComponentInChildren<CameraBis>().enabled = false;
-            gameObject.GetComponent<PlayerController>().enabled = false;*/
-            gameObject.GetComponentInChildren<CameraBis>().cursor = false;
             return;
         }
 
-        isGrounded = Physics.CheckSphere(groundCheck.position,0.2f,mask);
-
-        if(isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f;
-        }
-
-        /*____________________________MOUSE CAMERA________________________________*/
-
-        if(Input.GetButtonDown("Cursor"))
-        {
-            ChangeCursorLockState(); //Change the state of the cursor
-        }
-
-        /*___________________________MOVEMENTS____________________________________*/
-
+        
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.right * x + transform.forward * z;
-
-        controller.Move(move*currentSpeed*Time.deltaTime);
-
-        if(Input.GetButtonDown("Run") && isGrounded)
-        {
-            ChangeSpeed();
-        }
-
-        if(Input.GetButtonDown("Jump") && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
+        isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, mask);  //Check if the player is on the ground (prevent infinite jumping)
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
-
-        /*_______________________________PEW PEW_____________________________*/
-        if(Input.GetButtonDown("Fire1"))
+        
+        //Change the state of the cursor
+        if (Input.GetButtonDown("Cursor"))
         {
-            CmdFire();
-        }  
+            ChangeCursorLockState(); 
+        }
+
+        
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            /*____________________________MOUSE CAMERA________________________________*/
+
+            myCam.GetComponent<CameraBis>().UpdateCamera();  //Update camera and capsule rotation
+
+            /*_____________________________MOVEMENTS____________________________________*/
+
+            Vector3 move = transform.right * x + transform.forward * z;
+
+            controller.Move(move * currentSpeed * Time.deltaTime);
+
+            //Run command
+            if (Input.GetButtonDown("Run") && isGrounded)
+            {
+                ChangeSpeed();
+            }
+
+            //Reset gravity 
+            if (isGrounded && velocity.y < 0)
+            {
+                velocity.y = -2f;
+            }
+
+            //Jump command
+            if(Input.GetButtonDown("Jump") && isGrounded)
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            }
+            
+
+            /*_______________________________PEW PEW_____________________________*/
+
+            //Fire command
+            if (Input.GetButtonDown("Fire1"))
+            {
+                CmdFire();
+            }
+        }
     }
 
+    //Change lock state of cursor
    void ChangeCursorLockState()
     {
-        if(Cursor.lockState == CursorLockMode.None)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }
+        Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
     }
 
+    //Change movement speed
     void ChangeSpeed()
     {
         if(currentSpeed == 5f)
@@ -107,6 +105,7 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
+    // Client --> Server
     [Command]
     void CmdFire(){
         //Create the bullet
@@ -138,7 +137,9 @@ public class PlayerController : NetworkBehaviour
         }*/
     }
 
+    //Server --> Client
     [ClientRpc]
+    //Both next functions : Start playing gun particles
     public void RpcStartParticles(){
         StartParticles();
     }
@@ -147,6 +148,7 @@ public class PlayerController : NetworkBehaviour
         gunParticle.Play();
     }
 
+    //Enable camera and audioListener on connection of the player
     public override void OnStartLocalPlayer(){
         GetComponent<MeshRenderer>().material.color = Color.blue;
         if(!myCam.enabled || !myAudioListener.enabled){

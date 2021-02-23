@@ -2,28 +2,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
-public class Health : MonoBehaviour
+public class Health : NetworkBehaviour
 {
     public const int maxHP = 100;
 
-    //[SyncVar]
-    public int currentHP = maxHP; 
+    [SyncVar(hook = "OnChangeHealth")]
+    public int health = maxHP; 
 
     public RectTransform HPBar;
 
-    public void TakeDamage(int damage)
-    {
-        /*if(!isServer){
-            return;
-        }*/
-        
-        currentHP -= damage;
+    public bool destroyOnDeath;
 
-        if(currentHP <= 0){
-            currentHP = 0;
+    public void TakeDamage(int damage)
+    {   
+        if(!isServer)
+        {
+            return;
         }
 
-        HPBar.sizeDelta = new Vector2(currentHP, HPBar.sizeDelta.y);
+        health -= damage;
+
+        if(health <= 0){
+            if(destroyOnDeath)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                //transform.Translate(new Vector3(Random.value * 20f, 0, Random.value * 20f));
+                health = maxHP;
+                RpcRespawn();
+            }
+        }
+
+    }
+    
+    [ClientRpc]
+
+    public void RpcRespawn()
+    {
+        if(isLocalPlayer)
+        {
+            transform.position = new Vector3(0f, 1f, 0f);
+        }
+    }
+
+    public void OnChangeHealth(int oldHealth, int newHealth)
+    {
+        HPBar.sizeDelta = new Vector2(newHealth, HPBar.sizeDelta.y);
     }
 }

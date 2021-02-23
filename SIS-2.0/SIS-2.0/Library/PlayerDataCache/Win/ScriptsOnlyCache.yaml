@@ -11,8 +11,6 @@ ScriptsOnlyBuild:
     Mirror.Components.dll:
     - Mirror.NetworkTransform
     - Mirror.NetworkTransformChild
-    Mirror.Editor.dll:
-    - Mirror.NetworkBehaviourInspector
     Mirror.dll:
     - Mirror.NetworkIdentity
     - Mirror.NetworkManager
@@ -86,21 +84,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12424}
     - Class: 114
-      Script: {instanceID: 12838}
+      Script: {instanceID: 12832}
     - Class: 114
-      Script: {instanceID: 13082}
+      Script: {instanceID: 13074}
     - Class: 114
-      Script: {instanceID: 13142}
+      Script: {instanceID: 13134}
     - Class: 114
-      Script: {instanceID: 13288}
+      Script: {instanceID: 13280}
     - Class: 114
-      Script: {instanceID: 13322}
+      Script: {instanceID: 13314}
     - Class: 114
-      Script: {instanceID: 13456}
+      Script: {instanceID: 13448}
     - Class: 114
-      Script: {instanceID: 13550}
+      Script: {instanceID: 13542}
     - Class: 114
-      Script: {instanceID: 13634}
+      Script: {instanceID: 13626}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -462,7 +460,7 @@ ScriptsOnlyBuild:
     className: Player
   - hash:
       serializedVersion: 2
-      Hash: d86bbea7531d64fd61857a86a11ae27b
+      Hash: e0f6e9588a09bdb233f1eb6c0e95fe0a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Health
@@ -1123,4 +1121,4 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/garic/Desktop/SIS-2.0.exe
+  playerPath: C:/Users/garic/Desktop/Build230221/SIS-2.0.exe

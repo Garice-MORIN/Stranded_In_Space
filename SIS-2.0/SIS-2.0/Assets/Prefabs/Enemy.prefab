@@ -114,7 +114,6 @@ GameObject:
   - component: {fileID: 170188676883244124}
   - component: {fileID: 170188676883244125}
   - component: {fileID: 5752760688260127470}
-  - component: {fileID: 3111447899568599590}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Player
@@ -169,7 +168,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4fc2fe34b40fc654bbd66200bc56cb06, type: 2}
+  - {fileID: 2100000, guid: b85f9d29fbd24fe40a64c2681b0f050a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -217,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneId: 0
-  serverOnly: 1
+  serverOnly: 0
   m_AssetId: 
   hasSpawned: 0
 --- !u!114 &170188676883244125
@@ -250,26 +249,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd31c741a072e4449ac91b3d0e5beef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHP: 100
+  syncMode: 0
+  syncInterval: 0.1
+  health: 100
   HPBar: {fileID: 4071917071252899835}
---- !u!143 &3111447899568599590
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170188676883244103}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  destroyOnDeath: 1
 --- !u!1 &624283177714911131
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4071917070818438925
 RectTransform:
   m_ObjectHideFlags: 0

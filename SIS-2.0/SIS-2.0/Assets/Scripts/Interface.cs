@@ -15,7 +15,7 @@ public class Interface : NetworkBehaviour
             return;
         }
 
-        health.text = "You currently have " + gameObject.GetComponentInParent<Health>().currentHP.ToString()
+        health.text = "You currently have " + gameObject.GetComponentInParent<Health>().health.ToString()
             + " health points";
     }
 }

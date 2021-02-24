@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Mirror;
 
 public class PlayerController : NetworkBehaviour
 {
     public Camera myCam;
     public AudioListener myAudioListener;
+    public GameObject myCanvas;
     public LayerMask mask;
     public Transform MeleeRangeCheck;
     public float gunRange = 100000f;
@@ -17,11 +19,13 @@ public class PlayerController : NetworkBehaviour
     public Transform groundCheck;
     public Transform playerBody;
 
+
     float currentSpeed = 5f;
     bool isGrounded;
     Vector3 velocity;
     float gravity = -19.62f;
     float jumpHeight = 2f;
+
 
     void Update()
     {
@@ -47,6 +51,8 @@ public class PlayerController : NetworkBehaviour
         
         if (Cursor.lockState == CursorLockMode.Locked)
         {
+            Cursor.visible = false;
+
             /*____________________________MOUSE CAMERA________________________________*/
 
             myCam.GetComponent<CameraBis>().UpdateCamera();  //Update camera and capsule rotation
@@ -89,7 +95,16 @@ public class PlayerController : NetworkBehaviour
     //Change lock state of cursor
    void ChangeCursorLockState()
     {
-        Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
+        if (Cursor.lockState == CursorLockMode.None)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 
     //Change movement speed
@@ -150,11 +165,14 @@ public class PlayerController : NetworkBehaviour
 
     //Enable camera and audioListener on connection of the player
     public override void OnStartLocalPlayer(){
+
         GetComponent<MeshRenderer>().material.color = Color.blue;
-        if(!myCam.enabled || !myAudioListener.enabled){
+        if(!myCam.enabled || !myAudioListener.enabled ||!myCanvas){
+            myCanvas.gameObject.SetActive(true);
             myCam.enabled = true;
             myAudioListener.enabled = true;
         }
+
     }
 
 }

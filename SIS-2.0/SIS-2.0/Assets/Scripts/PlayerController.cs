@@ -51,7 +51,6 @@ public class PlayerController : NetworkBehaviour
         
         if (Cursor.lockState == CursorLockMode.Locked)
         {
-            Cursor.visible = false;
 
             /*____________________________MOUSE CAMERA________________________________*/
 
@@ -98,7 +97,7 @@ public class PlayerController : NetworkBehaviour
         if (Cursor.lockState == CursorLockMode.None)
         {
             Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            Cursor.visible = false;   //Masque la souris quand le curseur est vérouillé
         }
         else
         {
@@ -129,25 +128,28 @@ public class PlayerController : NetworkBehaviour
             bulletSpawn.position,
             bulletSpawn.rotation);
         
-        //Play the particle
-        if(!gunParticle.isPlaying)
-        {
-            RpcStartParticles();
-        }
+        
 
         //Spawn the bullet on clients
         NetworkServer.Spawn(bullet);
 
         //Destroy the bullet after 1.0s
         Destroy(bullet, 1.0f);
+        
+        //Play the particle
+        if(!gunParticle.isPlaying)
+        {
+            RpcStartParticles();
+        }
 
-        /*RaycastHit _hit;
+       /* RaycastHit _hit;
         if (Physics.Raycast(myCam.transform.position, myCam.transform.forward, out _hit, gunRange, mask))
         {
-            Target target = _hit.transform.GetComponent<Target>();
+            //Target target = _hit.transform.GetComponent<Target>();
+            Component target = _hit.transform.GetComponent<Health>();
             if(target != null)
             {
-                target.GetComponent<Target>().TakeDamage(gunDamage);
+                target.GetComponent<Health>().TakeDamage(10);
             }               
         }*/
     }
@@ -167,7 +169,7 @@ public class PlayerController : NetworkBehaviour
     public override void OnStartLocalPlayer(){
 
         GetComponent<MeshRenderer>().material.color = Color.blue;
-        if(!myCam.enabled || !myAudioListener.enabled ||!myCanvas){
+        if(!myCam.enabled || !myAudioListener.enabled || !myCanvas){
             myCanvas.gameObject.SetActive(true);
             myCam.enabled = true;
             myAudioListener.enabled = true;

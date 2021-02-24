@@ -15,6 +15,16 @@ public class Health : NetworkBehaviour
 
     public bool destroyOnDeath;
 
+    private NetworkStartPosition[] spawnPoints;
+
+    private void Start()
+    {
+        if(isLocalPlayer)
+        {
+            spawnPoints = FindObjectsOfType<NetworkStartPosition>();
+        }
+    }
+
     public void TakeDamage(int damage)
     {   
         if(!isServer)
@@ -45,12 +55,18 @@ public class Health : NetworkBehaviour
     {
         if(isLocalPlayer)
         {
-            transform.position = new Vector3(0f, 1f, 0f);
+            Vector3 spawnPoint = new Vector3(0f, 1f, 0f);
+            if(spawnPoints != null && spawnPoints.Length > 0)
+            {
+                spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
+            }
+            transform.position = spawnPoint;
         }
     }
 
     public void OnChangeHealth(int oldHealth, int newHealth)
     {
-        HPBar.sizeDelta = new Vector2(newHealth, HPBar.sizeDelta.y);
+        HPBar.sizeDelta = new Vector2(newHealth, HPBar.sizeDelta.y);  //Actualise la taille de la barre de vie 
     }
+
 }

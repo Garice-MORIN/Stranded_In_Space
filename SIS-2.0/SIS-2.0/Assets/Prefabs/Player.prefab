@@ -762,8 +762,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd31c741a072e4449ac91b3d0e5beef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHP: 100
+  syncMode: 0
+  syncInterval: 0.1
+  health: 100
   HPBar: {fileID: 1804793695}
+  destroyOnDeath: 0
 --- !u!143 &-7805777872003939710
 CharacterController:
   m_ObjectHideFlags: 0
@@ -778,7 +781,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}

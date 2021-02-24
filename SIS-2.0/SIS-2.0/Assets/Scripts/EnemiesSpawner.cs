@@ -7,13 +7,16 @@ public class EnemiesSpawner : NetworkBehaviour
 
    // public Transform spawner;
 
-    public int enemiesNumber;
+    public int enemiesNumber = 4;
+
+    GameObject[] allSpawnPoints;
 
     public override void OnStartServer()
     {
-        for(int i = 0; i < enemiesNumber; i++)
+        allSpawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoints");
+        for(int i = 0; i < 4; i++)
         {
-            var position = new Vector3((float)3 * Random.Range(1, 5), 0, (float)3 * Random.Range(1, 5));
+            var position = allSpawnPoints[i].transform.position;
 
             var orientation = Quaternion.Euler(0f, (float)Random.Range(0, 360), 0f);
 

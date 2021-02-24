@@ -97,7 +97,7 @@ public class PlayerController : NetworkBehaviour
     {
         if(currentSpeed == 5f)
         {
-            currentSpeed = 12f;
+            currentSpeed = 8f;
         }
         else
         {

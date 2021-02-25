@@ -9,6 +9,7 @@
 }
 
 .menu {
+    margin: -20px -20px;
     font-family: aoox;
     display: flex;
     justify-content: space-around;  
@@ -61,9 +62,15 @@
 }
 
 body {
+<<<<<<< HEAD
     margin: 0px;
     padding: 0px;
     font-family: nasa;
+=======
+    margin: 10px;
+    padding: 10px;
+    font-family: aoox;
+>>>>>>> 8525a7bf2e07494a617231144638a9b6dc32bf61
     font-size: 25px;
     color: black;
     text-align: center;
@@ -137,6 +144,7 @@ body {
     right: 0;
     left: 0
 }
+<<<<<<< HEAD
 .top {
     position: fixed;
     width: 25px;
@@ -157,6 +165,8 @@ footer {
     background-color: #222427;
     text-align: center;
 }
+=======
+>>>>>>> 8525a7bf2e07494a617231144638a9b6dc32bf61
 
 .actualites {
     background-color: #fff;
@@ -164,4 +174,8 @@ footer {
     linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
     linear-gradient(#eee .1em, transparent .1em);
     background-size: 100% 1.2em;    
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 8525a7bf2e07494a617231144638a9b6dc32bf61

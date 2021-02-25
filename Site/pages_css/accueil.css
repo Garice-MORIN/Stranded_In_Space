@@ -2,6 +2,12 @@
     font-family: "aoox";
     src: url('../font/aoox.ttf');
 }
+
+@font-face {
+    font-family: "nasa";
+    src: url('../font/nasa.ttf');
+}
+
 .menu {
     font-family: aoox;
     display: flex;
@@ -50,13 +56,23 @@
     width: 105px;
 }
 
+.title {
+    font-family: aoox;
+}
+.text {
+    width: 75%;
+    margin: 0 auto;
+}
 body {
     margin: 0px;
     padding: 0px;
-    font-family: aoox;
+    font-family: nasa;
     font-size: 25px;
     color: black;
     text-align: center;
+    background-image: url("../image/fond3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .slideshow{
@@ -81,6 +97,7 @@ body {
     animation: slideshow 25s ease infinite;
     position: absolute;
     opacity: 0;
+
 }
     
 .slideshow li:nth-child(2){
@@ -118,4 +135,25 @@ body {
     bottom: 0;
     right: 0;
     left: 0
+}
+
+.top {
+    position: fixed;
+    width: 25px;
+    height: 25px;
+    bottom: 50px;
+    right: 30px;
+}
+
+.top img {
+    width: 33px;
+}
+
+footer {
+    padding-bottom: 20px;
+    margin-top: 20px;
+    color: white;
+    font-size: 15px;
+    background-color: #222427;
+    text-align: center;
 }

@@ -16,26 +16,6 @@
     background-color: #222427;
 }
 
-.connexion {
-    margin-left: auto;
-    font-family: aoox;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #222427;
-}
-.connexion a {
-    color: white;
-    text-decoration: none;
-    letter-spacing: 1px;
-    font-weight: bold;
-    font-size: 12px;
-}
-    .connexion a:hover {
-        color: #222427;
-        background-color: ghostwhite;
-    }
-
 .logo {
     color: white;
     text-transform: uppercase; 
@@ -79,7 +59,10 @@
 .title {
     font-family: aoox;
 }
-
+.text {
+    width: 75%;
+    margin: 0 auto;
+}
 body {
     margin: 0px;
     padding: 0px;
@@ -87,14 +70,9 @@ body {
     font-size: 25px;
     color: black;
     text-align: center;
-    background-image: url("../images/fond3.jpg");
+    background-image: url("../image/fond3.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-.text {
-    width: 75%;
-    margin: 0 auto;
 }
 
 .slideshow{
@@ -119,6 +97,7 @@ body {
     animation: slideshow 25s ease infinite;
     position: absolute;
     opacity: 0;
+
 }
     
 .slideshow li:nth-child(2){
@@ -177,12 +156,4 @@ footer {
     font-size: 15px;
     background-color: #222427;
     text-align: center;
-}
-
-.actualites {
-    background-color: #fff;
-    background-image:
-    linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
-    linear-gradient(#eee .1em, transparent .1em);
-    background-size: 100% 1.2em;    
 }

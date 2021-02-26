@@ -11,7 +11,7 @@
 .menu {
     font-family: aoox;
     display: flex;
-    justify-content: space-around;  
+    justify-content: space-around;
     align-items: center;
     background-color: #222427;
 }
@@ -38,7 +38,7 @@
 
 .logo {
     color: white;
-    text-transform: uppercase; 
+    text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 30px;
 }
@@ -51,13 +51,13 @@
 .links {
     display: flex;
     justify-content: space-around;
-    width: 45%; 
+    width: 45%;
 }
 
 .links a:hover {
-    color: #222427; 
-    background-color: ghostwhite;  
-   
+    color: #222427;
+    background-color: ghostwhite;
+
 }
 .links li {
     list-style: none;
@@ -69,7 +69,7 @@
     letter-spacing: 2px;
     font-weight: bold;
     font-size: 20px;
-   
+
 }
 .pop {
     height: 90px;
@@ -105,14 +105,14 @@ body {
     margin: 2rem auto;
     position: relative
 }
-    
+
 .slideshow ul{
     padding-bottom: 66.67%;
     margin: 0;
     list-style-type: none;
     position: relative
 }
-    
+
 .slideshow li{
     top: 0;
     left: 0;
@@ -120,7 +120,7 @@ body {
     position: absolute;
     opacity: 0;
 }
-    
+
 .slideshow li:nth-child(2){
     animation-delay: 5s
 }
@@ -184,5 +184,5 @@ footer {
     background-image:
     linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
     linear-gradient(#eee .1em, transparent .1em);
-    background-size: 100% 1.2em;    
+    background-size: 100% 1.2em;
 }

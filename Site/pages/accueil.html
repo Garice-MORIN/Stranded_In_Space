@@ -8,37 +8,75 @@
 </head>
 <body>
     <nav class="menu" style="height: 90px;">
-        <img src="..\image\popcorn1.png" class="pop">
+        <img src="..\images\popcorn1.png" class="pop">
         <div class="logo">
             <a href="..\pages\accueil.html">Stranded In Space</a>
+            <!--<a href="..//pages/inscription.php">Inscrivez-vous!</a>-->
         </div>
         <ul class="links">
             <li>
-                <a href="#">Le jeu</a>
+                <a href="../pages/lejeu.html">Le jeu</a>
                 <!--on voudra rajouter un menu deroulant, avec possibilité d'accéder a différentes parties de la page en cliquant sur le lien-->
             </li>
             <li>
-                <a href="#">L'histoire du groupe</a> 
+                <a href="#">L'histoire du groupe</a>
                 <!--on voudra rajouter un menu deroulant, avec possibilité d'accéder a différentes parties de la page en cliquant sur le lien-->
             </li>
             <li>
                 <a href="#">Highscores</a>
-                <!--ici on laissera le lien tel quel pour accéder directement aux meilleurs scores des joueurs-->
+                <!--ici on laissera le lien tel quel pour accéder directement aux meilleurs scores des joueurs
+                on y accèdera depuis la base de données associée aux comptes des joueurs
+                je voudrais aussi faire en sorte qu'on puisse communiquer entre le jeu et la BDD, ca rendrait la récupération des meilleurs scores plus rapide-->
             </li>
         </ul>
-        <img src="..\image\popcorn2.png" class="pop">
+        <img src="..\images\popcorn2.png" class="pop">
     </nav>
-    <!--explication du jeu dans sa globalité, pourquoi on l'a fait, et ce a quoi on s'attend avec les dates-->
+    <nav class="connexion" style="width: 250px; height: 40px;">
+        <div>
+            <a href="..\pages\connexion.php">Connexion /</a>
+            <a href="..\pages\inscription.php">Inscription</a>
+        </div>
+    </nav>
+
+    </br><h1 class="title"><u>Stranded In Space</u></h1></br>
+    <p class="text">Bienvenue, humble voyageur spatial! </p></br>
+    <p class="text">
+        Nous sommes une équipe de 4 étudiants en prépa intégrée à l'école d'ingénieur en informatique: l'EPITA. Ceci est le site de notre
+        projet de 2eme semestre, que nous avons décidé d'appeler "Stranded In Space". Si vous voulez plus d'informations concernant ce projet, nous vous
+        invitons à visiter notre site à l'aide du menu déroulant en haut de cette page. Pour télécharger le jeu, en apprendre davantage sur l'univers des
+        personnages et leur histoire, rendez vous dans la section "Le jeu". Pour apprendre à mieux nous connaitre et en savoir plus sur notre vie, allez
+        dans la rubrique "L'histoire du groupe". Si vous voulez tout simplement consulter vos meilleurs scores, allez dans la rubrique "Highscores".
+    </p></br>
+    <p class="text">
+        Pour votre plaisir/information/divertissement, voici un petit diaporama de screenshots de l'evolution du jeu au fur et à mesure de sa conception:
+    </p>
     <!--diaporama d'evolution du projet:-->
     <div class="slideshow">
-		<ul>
-			<li><img src="#" alt width=600px height=400px><span>image random 1</span></li>
-			<li><img src="#" alt width=600px height=400px><span>image random 2</span></li>
-			<li><img src="#" alt width=600px height=400px><span>image random 3</span></li>
-			<li><img src="#" alt width=600px height=400px><span>image random 4</span></li>
-			<li><img src="#" alt width=600px height=400px><span>image random 5</span></li>
-		</ul>
-	</div>
-    <h2><u>Stranded In Space</u></h2></br>
+        <ul>
+            <li><img src="../images/update 3101" alt width=600px height=400px><span>image random 1</span></li>
+            <li><img src="../images/update 3101(0)" alt width=600px height=400px><span>image random 2</span></li>
+            <li><img src="../images/update 2302" alt width=600px height=400px><span>image random 3</span></li>
+            <li><img src="#" alt width=600px height=400px><span>image random 4</span></li>
+            <li><img src="#" alt width=600px height=400px><span>image random 5</span></li>
+        </ul>
+    </div>
+    <!--explication du jeu dans sa globalité, pourquoi on l'a fait, et ce a quoi on s'attend avec les dates-->
+    <div id="actualites">
+        <!--on mettra ici des actualités au fur et a mesure de l'avancée du jeu, si j'y arrive lol-->>
+    </div>
+    <p class="text">Nota Bene:</p>
+    <!--Petite explication de pourquoi le site ou le jeu ne seront plus mis à jour apres juillet 2021, on sait jamais,  des fois que
+        des gens tombent par hasard sur le site et kiffent le projet-->
+    <p class="text">
+        Ce jeu n'est qu'un jeu d'étudiants en première année, il est donc parfaitement normal que toute évolution après Juillet 2021 soit très peu probable.
+        Merci de votre compréhension, en espérant que vous n'avez pas télécharger notre jeu de maniere illégale ou peu sécurisée.
+    </p>
+    <div class="top">
+        <a href="#top"><img src="..\images\top.png"></a>
+    </div>
 </body>
+<footer>
+    <br> <i>by SwaltySpaceCrew</i> <br>
+    EPITA 2020/2021 <br>
+</footer>
 </html>

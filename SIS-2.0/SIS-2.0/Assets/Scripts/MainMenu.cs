@@ -22,8 +22,5 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("TestMap");
     }
 
-    public void ResetAnimation()
-    {
-        
-    }
+    
 }

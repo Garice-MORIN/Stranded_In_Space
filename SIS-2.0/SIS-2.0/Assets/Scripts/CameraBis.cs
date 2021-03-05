@@ -2,7 +2,7 @@
 
 public class CameraBis : MonoBehaviour
 {
-    public float mouseSensitivity = 1250f;
+    public float mouseSensitivity;
 
     public Transform playerBody;
 

@@ -7,9 +7,10 @@ using Mirror;
 public class MainMenu : MonoBehaviour
 {
     public AudioSource audioSource;
-    //public NetworkManager networkManager;
+    public AudioSource effectSource;
     public Slider volumeSlider;
     public Slider effectSlider;
+    Scene scene;
     //public Slider sensitivitySlider;
     public float sensitivity;
 
@@ -18,6 +19,8 @@ public class MainMenu : MonoBehaviour
         volumeSlider.value = 0.5f;
         audioSource.volume = 0.5f;
         effectSlider.value = 0.5f;
+        effectSource.volume = 0.5f;
+        scene = SceneManager.GetSceneByName("TestMap");
     }
 
     public void OnExitButton()
@@ -48,8 +51,9 @@ public class MainMenu : MonoBehaviour
 
     public void OnEffectValueChanged()
     {
-        Debug.Log(effectSlider.value);
+        effectSource.volume = effectSlider.value;
     }
+
 
     /*public void OnSensitivityChanged() //Currently not working 
     {

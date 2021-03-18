@@ -38,10 +38,10 @@ public class Health : NetworkBehaviour
             if(destroyOnDeath)
             {
                 Destroy(gameObject);
+                FindObjectOfType<EnemiesSpawner>().enemiesLeft--;
             }
             else
             {
-                //transform.Translate(new Vector3(Random.value * 20f, 0, Random.value * 20f));
                 health = maxHP;
                 RpcRespawn();
             }

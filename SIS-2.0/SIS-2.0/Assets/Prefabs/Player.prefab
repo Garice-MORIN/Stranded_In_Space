@@ -763,6 +763,7 @@ MonoBehaviour:
   syncInterval: 0.1
   health: 100
   HPBar: {fileID: 1804793695}
+  checker: {fileID: 2695676964019955302, guid: 248b7218cb4edb542b7a6a57c050f366, type: 3}
   destroyOnDeath: 0
 --- !u!143 &-7805777872003939710
 CharacterController:

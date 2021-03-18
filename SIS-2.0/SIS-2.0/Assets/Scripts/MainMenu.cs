@@ -10,7 +10,6 @@ public class MainMenu : MonoBehaviour
     public AudioSource effectSource;
     public Slider volumeSlider;
     public Slider effectSlider;
-    Scene scene;
     //public Slider sensitivitySlider;
     public float sensitivity;
 
@@ -20,7 +19,6 @@ public class MainMenu : MonoBehaviour
         audioSource.volume = 0.5f;
         effectSlider.value = 0.5f;
         effectSource.volume = 0.5f;
-        scene = SceneManager.GetSceneByName("TestMap");
     }
 
     public void OnExitButton()

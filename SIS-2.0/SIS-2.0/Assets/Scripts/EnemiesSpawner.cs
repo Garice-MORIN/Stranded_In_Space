@@ -37,6 +37,7 @@ public class EnemiesSpawner : NetworkBehaviour
             }
             catch (Exception e)
             {
+                Debug.Log(e);
                 return;
             }
             

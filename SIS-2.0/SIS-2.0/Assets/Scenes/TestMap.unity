@@ -262,6 +262,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   enemiesNumber: 3
+  enemiesLeft: 0
 --- !u!114 &171282256
 MonoBehaviour:
   m_ObjectHideFlags: 0

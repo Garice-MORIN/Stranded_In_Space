@@ -14,7 +14,7 @@ public class EnemiesSpawner : NetworkBehaviour
     public int enemiesLeft = 0;
 
     GameObject[] allSpawnPoints;
-    string path = "Assets/Scripts/Spawns.txt";
+    string path = "C:/Users/garic/Documents/GitHub/Stranded_In_Space/SIS-2.0/SIS-2.0/Assets/Scripts/Spawns.txt";
     Queue<string> queue = new Queue<string>();
 
     public override void OnStartServer()

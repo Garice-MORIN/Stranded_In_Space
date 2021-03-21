@@ -57,6 +57,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
     - Class: 95
@@ -64,21 +66,21 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11244}
+      Script: {instanceID: 11242}
     - Class: 114
       Script: {instanceID: 11246}
     - Class: 114
       Script: {instanceID: 11248}
     - Class: 114
-      Script: {instanceID: 11530}
+      Script: {instanceID: 11528}
     - Class: 114
-      Script: {instanceID: 12010}
+      Script: {instanceID: 12004}
     - Class: 114
-      Script: {instanceID: 12854}
+      Script: {instanceID: 12840}
     - Class: 114
-      Script: {instanceID: 13092}
+      Script: {instanceID: 13076}
     - Class: 114
-      Script: {instanceID: 13564}
+      Script: {instanceID: 13544}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -126,6 +128,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
     - Class: 95
@@ -133,7 +137,7 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11244}
+      Script: {instanceID: 11242}
     - Class: 114
       Script: {instanceID: 11246}
     - Class: 114
@@ -141,37 +145,37 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11346}
     - Class: 114
-      Script: {instanceID: 11440}
+      Script: {instanceID: 11438}
     - Class: 114
-      Script: {instanceID: 11468}
+      Script: {instanceID: 11466}
     - Class: 114
-      Script: {instanceID: 11530}
+      Script: {instanceID: 11528}
     - Class: 114
-      Script: {instanceID: 11908}
+      Script: {instanceID: 11904}
     - Class: 114
-      Script: {instanceID: 11942}
+      Script: {instanceID: 11936}
     - Class: 114
-      Script: {instanceID: 11994}
+      Script: {instanceID: 11988}
     - Class: 114
-      Script: {instanceID: 12010}
+      Script: {instanceID: 12004}
     - Class: 114
-      Script: {instanceID: 12326}
+      Script: {instanceID: 12314}
     - Class: 114
-      Script: {instanceID: 13092}
+      Script: {instanceID: 13076}
     - Class: 114
-      Script: {instanceID: 13154}
+      Script: {instanceID: 13136}
     - Class: 114
-      Script: {instanceID: 13300}
+      Script: {instanceID: 13282}
     - Class: 114
-      Script: {instanceID: 13334}
+      Script: {instanceID: 13316}
     - Class: 114
-      Script: {instanceID: 13468}
+      Script: {instanceID: 13450}
     - Class: 114
-      Script: {instanceID: 13564}
+      Script: {instanceID: 13544}
     - Class: 114
-      Script: {instanceID: 13598}
+      Script: {instanceID: 13578}
     - Class: 114
-      Script: {instanceID: 13650}
+      Script: {instanceID: 13628}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -228,17 +232,17 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11472}
+      Script: {instanceID: 11470}
     - Class: 114
-      Script: {instanceID: 11942}
+      Script: {instanceID: 11936}
     - Class: 114
-      Script: {instanceID: 12010}
+      Script: {instanceID: 12004}
     - Class: 114
-      Script: {instanceID: 12436}
+      Script: {instanceID: 12424}
     - Class: 114
-      Script: {instanceID: 13154}
+      Script: {instanceID: 13136}
     - Class: 114
-      Script: {instanceID: 13564}
+      Script: {instanceID: 13544}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -256,22 +260,16 @@ ScriptsOnlyBuild:
     className: Outline
   - hash:
       serializedVersion: 2
-      Hash: 7ab0e790220bdca831fdd886b339039d
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: GridLayoutGroup
-  - hash:
-      serializedVersion: 2
       Hash: 5f1752ed2092162f016c19510c28a8b9
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Button
   - hash:
       serializedVersion: 2
-      Hash: 4bc4346a71a8df53a6b106f68ef3a190
+      Hash: 7ab0e790220bdca831fdd886b339039d
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
-    className: CanvasScaler
+    className: GridLayoutGroup
   - hash:
       serializedVersion: 2
       Hash: aeb62f729c52c814dec86c47dcac1471
@@ -280,7 +278,13 @@ ScriptsOnlyBuild:
     className: Text
   - hash:
       serializedVersion: 2
-      Hash: 8617aadb248da95f2695ca5669494400
+      Hash: 4bc4346a71a8df53a6b106f68ef3a190
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: CanvasScaler
+  - hash:
+      serializedVersion: 2
+      Hash: 667add9e2cad9b4b389bb1f9f9c8fca0
     assemblyName: Mirror.dll
     namespaceName: Mirror
     className: TelepathyTransport
@@ -334,16 +338,16 @@ ScriptsOnlyBuild:
     className: NetworkTransform
   - hash:
       serializedVersion: 2
-      Hash: 6fd2bb55b3ee5edb6040a1c5bccd0e07
-    assemblyName: Mirror.Components.dll
-    namespaceName: Mirror
-    className: NetworkOwnerChecker
-  - hash:
-      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: GroupTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Mirror.Examples.dll
+    namespaceName: Mirror.Examples.MultipleAdditiveScenes
+    className: Spawner
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -364,7 +368,7 @@ ScriptsOnlyBuild:
     className: ActivationTrack
   - hash:
       serializedVersion: 2
-      Hash: 36f24d1b0e21abb6bbb4226156aead3d
+      Hash: b2b4a4bf81317f3c08703a1773162a08
     assemblyName: Mirror.dll
     namespaceName: Mirror
     className: NetworkManager
@@ -448,6 +452,12 @@ ScriptsOnlyBuild:
     className: NetworkRoomPlayerExt
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Mirror.Examples.dll
+    namespaceName: Mirror.Examples.NetworkRoom
+    className: Spawner
+  - hash:
+      serializedVersion: 2
       Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -490,7 +500,7 @@ ScriptsOnlyBuild:
     className: AnimationTrack
   - hash:
       serializedVersion: 2
-      Hash: 31aa47a8fee44532c586b1b3d52da00d
+      Hash: 1819ce053d46070dc0fa64957811d105
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.Basic
     className: BasicNetManager
@@ -580,7 +590,7 @@ ScriptsOnlyBuild:
     className: Health
   - hash:
       serializedVersion: 2
-      Hash: 9a13830cdcf29a9456e63ce787e26add
+      Hash: 09a332418522e82d937585e2a061b3cf
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.Benchmark
     className: BenchmarkNetworkManager
@@ -622,7 +632,7 @@ ScriptsOnlyBuild:
     className: ControlPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 5cc439bf63c0539d39588e69465ac2ab
+      Hash: fd68d84f33fad85aac38f2739c0ee270
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SpriteAsset
@@ -652,7 +662,7 @@ ScriptsOnlyBuild:
     className: ZoneHandler
   - hash:
       serializedVersion: 2
-      Hash: 623c7e9953c06e89727018767af543d0
+      Hash: e6b0b783ea73cf405c717cd9b89fbd7c
     assemblyName: Mirror.Components.dll
     namespaceName: Mirror
     className: NetworkRoomManager
@@ -736,7 +746,7 @@ ScriptsOnlyBuild:
     className: Ball
   - hash:
       serializedVersion: 2
-      Hash: 36f24d1b0e21abb6bbb4226156aead3d
+      Hash: b2b4a4bf81317f3c08703a1773162a08
     assemblyName: Mirror.Examples.Cloud.Pong.dll
     namespaceName: Mirror.Cloud.Example
     className: NetworkManagerListServerPong
@@ -808,7 +818,7 @@ ScriptsOnlyBuild:
     className: NetworkPingDisplay
   - hash:
       serializedVersion: 2
-      Hash: 038e9d851b840cf9a47b7a9130bddcbe
+      Hash: f52f0b15bed2b56b2f0be090a01715d5
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.Chat
     className: ChatNetworkManager
@@ -844,13 +854,13 @@ ScriptsOnlyBuild:
     className: NetworkRoomPlayer
   - hash:
       serializedVersion: 2
-      Hash: 917aa1c44bacc59bec5bbefdf8a55780
+      Hash: 99c0a126362deee82174d19c1101b9d8
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.Additive
     className: AdditiveNetworkManager
   - hash:
       serializedVersion: 2
-      Hash: 783f593b9380cf72d0f7ebfd4a0d4bcd
+      Hash: f64fd37da5cb89243ec68b5026d70bb8
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: InputField
@@ -880,7 +890,7 @@ ScriptsOnlyBuild:
     className: HorizontalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 344a8c2e106a0a4e098e91a52e0af063
+      Hash: f0786811516f7de8befd7a3e181e567a
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_FontAsset
@@ -958,13 +968,13 @@ ScriptsOnlyBuild:
     className: ServerListUIItem
   - hash:
       serializedVersion: 2
-      Hash: ba659f74adb918d2b465bb89cbb55fae
+      Hash: 1088b99d0c88ca05dcb48022854c0cd7
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.Pong
     className: NetworkManagerPong
   - hash:
       serializedVersion: 2
-      Hash: 4db39a6c3f98660133b59d546269c9df
+      Hash: b161cec9f1aa3450287de7d46cdd621a
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.MultipleMatch
     className: MatchNetworkManager
@@ -982,7 +992,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: 7ff3276746485ebfaf16cbfc0a8e0414
+      Hash: 38df5159a8fc5f22f3fbf2e820a38263
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.NetworkRoom
     className: NetworkRoomManagerExt
@@ -1048,7 +1058,7 @@ ScriptsOnlyBuild:
     className: NetworkDiscoveryHUD
   - hash:
       serializedVersion: 2
-      Hash: 623c7e9953c06e89727018767af543d0
+      Hash: e6b0b783ea73cf405c717cd9b89fbd7c
     assemblyName: Mirror.Components.dll
     namespaceName: Mirror
     className: NetworkLobbyManager
@@ -1090,7 +1100,7 @@ ScriptsOnlyBuild:
     className: Player
   - hash:
       serializedVersion: 2
-      Hash: a1a23215a668249a5f4c5e33bf0d6539
+      Hash: 87c5db0617cbaa0f83b4cf2da2985e62
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.MultipleAdditiveScenes
     className: MultiSceneNetManager
@@ -1114,7 +1124,7 @@ ScriptsOnlyBuild:
     className: NetworkDiscovery
   - hash:
       serializedVersion: 2
-      Hash: 36f24d1b0e21abb6bbb4226156aead3d
+      Hash: b2b4a4bf81317f3c08703a1773162a08
     assemblyName: Mirror.Examples.Cloud.GUI.dll
     namespaceName: Mirror.Cloud.Example
     className: NetworkManagerListServer
@@ -1240,7 +1250,7 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: a8d499191b1fc6133b3e2932309a9558
+      Hash: 9c1493f9c630da52130633fb513a4637
     assemblyName: Mirror.dll
     namespaceName: kcp2k
     className: KcpTransport

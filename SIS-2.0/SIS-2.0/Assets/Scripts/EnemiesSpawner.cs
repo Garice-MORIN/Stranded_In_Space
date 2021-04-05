@@ -7,6 +7,7 @@ using System.Collections.Generic;
 public class EnemiesSpawner : NetworkBehaviour
 {
     GameObject enemyPrefab;
+    public LayerMask mask;
 
     public int enemiesNumber = 4;
 
@@ -30,13 +31,13 @@ public class EnemiesSpawner : NetworkBehaviour
 
     public void ChoosePath()
     {
-        if(!Application.isPlaying)
+        if(Application.isPlaying)
         {
-            path = "Assets/Scripts/Spawns.txt";
+            path = "StandAlone/Spawns.txt";
         }
         else
         {
-            path = "StandAlone/Spawns.txt";
+            path = "Assets/Scripts/Spawns.txt";
         }
     }
 
@@ -48,9 +49,9 @@ public class EnemiesSpawner : NetworkBehaviour
             {
                 LoadEnemies();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Debug.Log(e);
+                Debug.Log("The entity you're trying to spawn does not exist");
                 return;
             }
             
@@ -64,7 +65,7 @@ public class EnemiesSpawner : NetworkBehaviour
         foreach (var enemy in queue.Dequeue().Split(','))
         {
             enemyPrefab = Resources.Load(enemy) as GameObject;     //Charge le modèle correspondant au type d'ennemi
-
+            
             var position = allSpawnPoints[i].transform.position;
             var orientation = Quaternion.Euler(0f, (float)UnityEngine.Random.Range(0, 360), 0f);
             var toSpawn = (GameObject)Instantiate(enemyPrefab, position, orientation);
@@ -86,6 +87,7 @@ public class EnemiesSpawner : NetworkBehaviour
         }
         sr.Close();
     }
+
 
     void OnChangeEnemiesLeft(int oldEnemiesleft, int newEnemiesLeft)
     {

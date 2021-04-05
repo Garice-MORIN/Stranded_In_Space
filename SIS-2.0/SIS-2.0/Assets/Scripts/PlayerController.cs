@@ -135,7 +135,7 @@ public class PlayerController : NetworkBehaviour
         NetworkServer.Spawn(bullet);
 
         //Destroy the bullet after 1.0s
-        Destroy(bullet, 1.0f);
+        Destroy(bullet, 0.2f);
         
         //Play the particle
         if(!gunParticle.isPlaying)

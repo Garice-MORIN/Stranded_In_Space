@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
         volumeSlider.value = 0.5f;
         audioSource.volume = 0.5f;
         effectSlider.value = 0.5f;
-        effectSource.volume = 0.5f;
+        Screen.fullScreen = false;
     }
 
     public void OnExitButton()

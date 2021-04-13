@@ -116,7 +116,7 @@ MonoBehaviour:
   m_MinSize: {x: 609, y: 392}
   m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
-  controlID: 35
+  controlID: 75
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 231, y: 392}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 40
+  controlID: 99
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -403,9 +403,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 10.285188, y: -0.22846937, z: -62.64114}
+    m_Target: {x: 30.327988, y: -23.382164, z: -49.032543}
     speed: 2
-    m_Value: {x: 10.285188, y: -0.22846937, z: -62.64114}
+    m_Value: {x: 30.327988, y: -23.382164, z: -49.032543}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -451,13 +451,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.036663316, y: -0.93774354, z: 0.103290826, w: -0.32999283}
+    m_Target: {x: 0.26654422, y: 0.63269496, z: -0.24557301, w: 0.6845751}
     speed: 2
-    m_Value: {x: -0.03862535, y: -0.93564856, z: 0.10732256, w: -0.33399364}
+    m_Value: {x: 0.2657667, y: 0.63465136, z: -0.24633487, w: 0.68257225}
   m_Size:
-    m_Target: 13.922551
+    m_Target: 33.399986
     speed: 2
-    m_Value: 13.323015
+    m_Value: 33.399986
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -521,20 +521,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Metal textures pack/pattern 23
+    - Assets/Metal textures pack/pattern 27
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Metal textures pack/pattern 23
+  - Assets/Metal textures pack/pattern 27
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\garic\Documents\GitHub\Stranded_In_Space\SIS-2.0\SIS-2.0
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 314}
-    m_SelectedIDs: 30490000
-    m_LastClickedID: 18736
-    m_ExpandedIDs: 000000003a4000007040000074400000a440000000ca9a3b
+    scrollPos: {x: 0, y: 698}
+    m_SelectedIDs: 9c3d0000
+    m_LastClickedID: 15772
+    m_ExpandedIDs: 000000003a3d00003c3d00003e3d0000463d0000503d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -562,7 +562,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000003a400000
+    m_ExpandedIDs: 000000003a3d00003c3d00003e3d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -649,7 +649,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 1af8ffffe2f9ffff28fbffff
+      m_ExpandedIDs: 58fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 

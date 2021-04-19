@@ -28,7 +28,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnStartButton()
     {
-        SceneManager.LoadScene("TestMap");
+        SceneManager.LoadScene("FinalMap");
     }
 
     public void TestMapButton()

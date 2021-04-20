@@ -1,8 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Mirror;
 
-public class PauseMenu : MonoBehaviour
+public class PauseMenu : NetworkBehaviour
 {
-    public static bool isOn = false;
+    private NetworkManager networkManager;
+
+    private void Start()
+    {
+        networkManager = NetworkManager.singleton;
+    }
+
+    public void OnMainMenu()
+    {
+        if(isClientOnly)
+        {
+            networkManager.StopClient();
+        }
+        else
+        {
+            networkManager.StopHost();
+        }
+        SceneManager.LoadScene("MainMenu");
+    }
+ 
 }

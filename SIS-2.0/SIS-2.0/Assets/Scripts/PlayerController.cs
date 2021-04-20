@@ -50,12 +50,11 @@ public class PlayerController : NetworkBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-      
+
         //Change the state of the cursor
         if (Input.GetButtonDown("Cursor"))
         {
             ChangeCursorLockState();
-            TogglePauseMenu();
         }
 
 
@@ -102,8 +101,8 @@ public class PlayerController : NetworkBehaviour
 
     }
 
-    //Change lock state of cursor
-    void ChangeCursorLockState()
+    //Change lock state of cursor and display the pause menu
+    public void ChangeCursorLockState()
     {
         if (Cursor.lockState == CursorLockMode.None)
         {
@@ -115,18 +114,15 @@ public class PlayerController : NetworkBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-    }
-
-    //Affichage du menu pause
-    public void TogglePauseMenu()
-    {
         pauseMenu.SetActive(!pauseMenu.activeSelf);
     }
+
+
 
     //Change movement speed
     void ChangeSpeed()
     {
-        if(currentSpeed == 5f)
+        if (currentSpeed == 5f)
         {
             currentSpeed = 8f;
         }
@@ -138,68 +134,64 @@ public class PlayerController : NetworkBehaviour
 
     // Client --> Server
     [Command]
-    void CmdFire(){
+    void CmdFire()
+    {
         //Create the bullet
         var bullet = (GameObject)Instantiate(
             bulletPrefab,
             bulletSpawn.position,
             bulletSpawn.rotation);
-        
-        
+
+
 
         //Spawn the bullet on clients
         NetworkServer.Spawn(bullet);
 
         //Destroy the bullet after 1.0s
         Destroy(bullet, 0.2f);
-        
+
         //Play the particle
-        if(!gunParticle.isPlaying)
+        if (!gunParticle.isPlaying)
         {
             RpcStartParticles();
         }
 
-       /* RaycastHit _hit;
-        if (Physics.Raycast(myCam.transform.position, myCam.transform.forward, out _hit, gunRange, mask))
-        {
-            //Target target = _hit.transform.GetComponent<Target>();
-            Component target = _hit.transform.GetComponent<Health>();
-            if(target != null)
-            {
-                target.GetComponent<Health>().TakeDamage(10);
-            }               
-        }*/
+        /* RaycastHit _hit;
+         if (Physics.Raycast(myCam.transform.position, myCam.transform.forward, out _hit, gunRange, mask))
+         {
+             //Target target = _hit.transform.GetComponent<Target>();
+             Component target = _hit.transform.GetComponent<Health>();
+             if(target != null)
+             {
+                 target.GetComponent<Health>().TakeDamage(10);
+             }               
+         }*/
     }
 
     //Server --> Client
     [ClientRpc]
     //Both next functions : Start playing gun particles
-    public void RpcStartParticles(){
+    public void RpcStartParticles()
+    {
         StartParticles();
     }
 
-    public void StartParticles(){
+    public void StartParticles()
+    {
         gunParticle.Play();
     }
 
     //Enable camera and audioListener on connection of the player
-    public override void OnStartLocalPlayer(){
+    public override void OnStartLocalPlayer()
+    {
 
         GetComponent<MeshRenderer>().material.color = Color.blue;
-        if(!myCam.enabled || !myAudioListener.enabled || !myCanvas){
+        if (!myCam.enabled || !myAudioListener.enabled || !myCanvas)
+        {
             myCanvas.gameObject.SetActive(true);
             myCam.enabled = true;
             myAudioListener.enabled = true;
         }
-      
 
     }
-
-    public void OnClickButton()
-    {   
-        
-        SceneManager.LoadScene("MainMenu");
-        
-    }
-
 }

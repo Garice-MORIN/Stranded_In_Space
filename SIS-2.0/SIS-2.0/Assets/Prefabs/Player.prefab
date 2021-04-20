@@ -606,6 +606,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1012812764884556048}
   playerBody: {fileID: 4242103549478655201}
   pauseMenu: {fileID: 4271312663685459187}
+  scoreBoard: {fileID: 1343020130143303599}
 --- !u!114 &1863195092447118859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -993,6 +994,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4242103549478655201}
     m_Modifications:
+    - target: {fileID: 897900630620800158, guid: 4d8ffdd11f1279d47a468fdf50bc3f9e,
+        type: 3}
+      propertyPath: m_AssetId
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7312360058385119261, guid: 4d8ffdd11f1279d47a468fdf50bc3f9e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1261322305057248908}
     - target: {fileID: 7863667585867922898, guid: 4d8ffdd11f1279d47a468fdf50bc3f9e,
         type: 3}
       propertyPath: m_Name
@@ -1129,6 +1140,12 @@ RectTransform:
 --- !u!1 &4271312663685459187 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7558056867404319036, guid: 4d8ffdd11f1279d47a468fdf50bc3f9e,
+    type: 3}
+  m_PrefabInstance: {fileID: 6027325456532858319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1343020130143303599 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4685433702919737952, guid: 4d8ffdd11f1279d47a468fdf50bc3f9e,
     type: 3}
   m_PrefabInstance: {fileID: 6027325456532858319}
   m_PrefabAsset: {fileID: 0}

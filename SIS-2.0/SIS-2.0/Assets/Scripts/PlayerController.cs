@@ -21,6 +21,8 @@ public class PlayerController : NetworkBehaviour
     public Transform groundCheck;
     public Transform playerBody;
     public GameObject pauseMenu;
+    public GameObject scoreBoard;
+    public PauseMenu pause;
 
 
 
@@ -34,6 +36,10 @@ public class PlayerController : NetworkBehaviour
     private void Start()
     {
         pauseMenu.SetActive(false);
+        scoreBoard.SetActive(false);
+        pause.settingsMenu.SetActive(false);
+        pause.commandMenu.SetActive(false);
+        pause.commandMenu.transform.GetChild(5).gameObject.SetActive(false);
     }
     void Update()
     {
@@ -97,6 +103,13 @@ public class PlayerController : NetworkBehaviour
             {
                 CmdFire();
             }
+
+            /*____________________________SCOREBOARD_____________________________*/
+
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                scoreBoard.SetActive(!scoreBoard.activeSelf);
+            } 
         }
 
     }

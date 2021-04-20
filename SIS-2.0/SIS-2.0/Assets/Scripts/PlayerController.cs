@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Mirror;
 
+
 public class PlayerController : NetworkBehaviour
 {
     public Camera myCam;
@@ -19,6 +20,9 @@ public class PlayerController : NetworkBehaviour
     public CharacterController controller;
     public Transform groundCheck;
     public Transform playerBody;
+    public GameObject pauseMenu;
+
+
 
 
     float currentSpeed = 5f;
@@ -27,29 +31,34 @@ public class PlayerController : NetworkBehaviour
     float gravity = -19.62f;
     float jumpHeight = 2f;
 
-
+    private void Start()
+    {
+        pauseMenu.SetActive(false);
+    }
     void Update()
     {
-        if(!isLocalPlayer)
+        if (!isLocalPlayer)
         {
             return;
         }
 
-        
+
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
         isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, mask);  //Check if the player is on the ground (prevent infinite jumping)
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
-        
+
+      
         //Change the state of the cursor
         if (Input.GetButtonDown("Cursor"))
         {
-            ChangeCursorLockState(); 
+            ChangeCursorLockState();
+            TogglePauseMenu();
         }
 
-        
+
         if (Cursor.lockState == CursorLockMode.Locked)
         {
 
@@ -76,11 +85,11 @@ public class PlayerController : NetworkBehaviour
             }
 
             //Jump command
-            if(Input.GetButtonDown("Jump") && isGrounded)
+            if (Input.GetButtonDown("Jump") && isGrounded)
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             }
-            
+
 
             /*_______________________________PEW PEW_____________________________*/
 
@@ -90,10 +99,11 @@ public class PlayerController : NetworkBehaviour
                 CmdFire();
             }
         }
+
     }
 
     //Change lock state of cursor
-   void ChangeCursorLockState()
+    void ChangeCursorLockState()
     {
         if (Cursor.lockState == CursorLockMode.None)
         {
@@ -105,6 +115,12 @@ public class PlayerController : NetworkBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+    }
+
+    //Affichage du menu pause
+    public void TogglePauseMenu()
+    {
+        pauseMenu.SetActive(!pauseMenu.activeSelf);
     }
 
     //Change movement speed
@@ -175,6 +191,7 @@ public class PlayerController : NetworkBehaviour
             myCam.enabled = true;
             myAudioListener.enabled = true;
         }
+      
 
     }
 

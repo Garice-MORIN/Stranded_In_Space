@@ -3,7 +3,18 @@ guid: 85d389677ac1f5a4682dce2fc0711e7e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - myCam: {instanceID: 0}
+  - myAudioListener: {instanceID: 0}
+  - myCanvas: {instanceID: 0}
+  - MeleeRangeCheck: {instanceID: 0}
+  - bulletPrefab: {instanceID: 0}
+  - bulletSpawn: {instanceID: 0}
+  - gunParticle: {instanceID: 0}
+  - controller: {instanceID: 0}
+  - groundCheck: {instanceID: 0}
+  - playerBody: {instanceID: 0}
+  - pauseMenu: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

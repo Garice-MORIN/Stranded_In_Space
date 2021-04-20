@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 using Mirror;
 
 public class PlayerController : NetworkBehaviour
@@ -19,7 +20,6 @@ public class PlayerController : NetworkBehaviour
     public CharacterController controller;
     public Transform groundCheck;
     public Transform playerBody;
-
 
     float currentSpeed = 5f;
     bool isGrounded;
@@ -46,11 +46,11 @@ public class PlayerController : NetworkBehaviour
         //Change the state of the cursor
         if (Input.GetButtonDown("Cursor"))
         {
-            ChangeCursorLockState(); 
+            ChangeCursorLockState();
         }
 
         
-        if (Cursor.lockState == CursorLockMode.Locked)
+        if (UnityEngine.Cursor.lockState == CursorLockMode.Locked)
         {
 
             /*____________________________MOUSE CAMERA________________________________*/
@@ -95,15 +95,15 @@ public class PlayerController : NetworkBehaviour
     //Change lock state of cursor
    void ChangeCursorLockState()
     {
-        if (Cursor.lockState == CursorLockMode.None)
+        if (UnityEngine.Cursor.lockState == CursorLockMode.None)
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;   //Masque la souris quand le curseur est vérouillé
+            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            UnityEngine.Cursor.visible = false;   //Masque la souris quand le curseur est vérouillé
         }
         else
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+            UnityEngine.Cursor.visible = true;
         }
     }
 

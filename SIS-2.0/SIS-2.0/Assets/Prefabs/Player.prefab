@@ -727,6 +727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneId: 0
   serverOnly: 0
+  visible: 0
   m_AssetId: 
   hasSpawned: 0
 --- !u!114 &4242103549478655225
@@ -763,7 +764,6 @@ MonoBehaviour:
   syncInterval: 0.1
   health: 100
   HPBar: {fileID: 1804793695}
-  checker: {fileID: 2695676964019955302, guid: 248b7218cb4edb542b7a6a57c050f366, type: 3}
   destroyOnDeath: 0
 --- !u!143 &-7805777872003939710
 CharacterController:
@@ -1200,10 +1200,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4242103549478655201}
     m_Modifications:
+    - target: {fileID: 3081474795326633458, guid: 4d8ffdd11f1279d47a468fdf50bc3f9e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635588742931682488, guid: 4d8ffdd11f1279d47a468fdf50bc3f9e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Goal
+      objectReference: {fileID: 0}
     - target: {fileID: 7863667585867922898, guid: 4d8ffdd11f1279d47a468fdf50bc3f9e,
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7863667585867922898, guid: 4d8ffdd11f1279d47a468fdf50bc3f9e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7863667585867922908, guid: 4d8ffdd11f1279d47a468fdf50bc3f9e,
         type: 3}
@@ -1314,6 +1329,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403482434595562031, guid: 4d8ffdd11f1279d47a468fdf50bc3f9e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d8ffdd11f1279d47a468fdf50bc3f9e, type: 3}

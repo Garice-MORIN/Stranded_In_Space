@@ -10,6 +10,8 @@ public class MainMenu : MonoBehaviour
     public AudioSource effectSource;
     public Slider volumeSlider;
     public Slider effectSlider;
+    public GameObject anchor;
+    //Animator animator;
     //public Slider sensitivitySlider;
     public float sensitivity;
 
@@ -24,6 +26,17 @@ public class MainMenu : MonoBehaviour
     public void OnExitButton()
     {
         Application.Quit();
+    }
+
+    public void HideAnchor()
+    {
+        GetComponent<Animator>().Play("Normal");
+        anchor.SetActive(false);
+    }
+
+    public void ShowAnchor()
+    {
+        anchor.SetActive(true);
     }
 
     public void OnStartButton()

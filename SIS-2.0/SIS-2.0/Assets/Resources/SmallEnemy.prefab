@@ -593,11 +593,11 @@ RectTransform:
   m_Father: {fileID: 6552537192679558892}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 10}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &6552537193013299056
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -790,8 +790,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  maxHP: 50
   health: 50
   HPBar: {fileID: 6552537193013299022}
+  background: {fileID: 6552537192679558892}
   destroyOnDeath: 1
 --- !u!195 &4969366338107377879
 NavMeshAgent:
@@ -807,7 +809,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 4
+  m_StoppingDistance: 1.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -831,6 +833,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   enemyPosition: {fileID: 6931518593030710512}
+  damage: 10
 --- !u!1 &6931518593540281585
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,8 +9,6 @@ public class EnemiesSpawner : NetworkBehaviour
     GameObject enemyPrefab;
     public LayerMask mask;
 
-    public int enemiesNumber = 4;
-
     [SyncVar(hook = "OnChangeEnemiesLeft")]
     public int enemiesLeft = 0;
 
@@ -71,10 +69,10 @@ public class EnemiesSpawner : NetworkBehaviour
             var toSpawn = (GameObject)Instantiate(enemyPrefab, position, orientation);
 
             NetworkServer.Spawn(toSpawn);
-            i++;
+            i = (i+1)%4;
             enemiesLeft++;
         }
-        enemiesLeft = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        //enemiesLeft = GameObject.FindGameObjectsWithTag("Enemy").Length;
     }
 
     void CreateSpawnList()

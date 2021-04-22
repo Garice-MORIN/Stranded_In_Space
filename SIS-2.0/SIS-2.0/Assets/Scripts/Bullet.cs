@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
 
         if(HP != null){
             //Take damage
-            HP.TakeDamage(10);
+            HP.TakeDamage(50);
         }
         Destroy(gameObject);
     }

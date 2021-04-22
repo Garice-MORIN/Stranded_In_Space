@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Goal
   - Tower
+  - TurretSpawnPoints
+  - Decor
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,7 @@ public class PlayerController : NetworkBehaviour
     public LayerMask mask;
     public Transform MeleeRangeCheck;
     public float gunRange = 100000f;
+    public GameObject towerPrefab;
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
     public ParticleSystem gunParticle;
@@ -20,21 +21,17 @@ public class PlayerController : NetworkBehaviour
     public Transform groundCheck;
     public Transform playerBody;
 
-
     float currentSpeed = 5f;
     bool isGrounded;
+    bool constructionMode = false;
     Vector3 velocity;
     float gravity = -19.62f;
     float jumpHeight = 2f;
 
-
-    void Update()
-    {
-        if(!isLocalPlayer)
-        {
+    void Update(){
+        if(!isLocalPlayer){
             return;
         }
-
         
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
@@ -44,15 +41,12 @@ public class PlayerController : NetworkBehaviour
         controller.Move(velocity * Time.deltaTime);
         
         //Change the state of the cursor
-        if (Input.GetButtonDown("Cursor"))
-        {
+        if (Input.GetButtonDown("Cursor")){
             ChangeCursorLockState(); 
         }
 
         
-        if (Cursor.lockState == CursorLockMode.Locked)
-        {
-
+        if (Cursor.lockState == CursorLockMode.Locked){
             /*____________________________MOUSE CAMERA________________________________*/
 
             myCam.GetComponent<CameraBis>().UpdateCamera();  //Update camera and capsule rotation
@@ -64,44 +58,55 @@ public class PlayerController : NetworkBehaviour
             controller.Move(move * currentSpeed * Time.deltaTime);
 
             //Run command
-            if (Input.GetButtonDown("Run") && isGrounded)
-            {
+            if (Input.GetButtonDown("Run") && isGrounded){
                 ChangeSpeed();
             }
 
             //Reset gravity 
-            if (isGrounded && velocity.y < 0)
-            {
+            if (isGrounded && velocity.y < 0){
                 velocity.y = -2f;
             }
 
             //Jump command
-            if(Input.GetButtonDown("Jump") && isGrounded)
-            {
+            if(Input.GetButtonDown("Jump") && isGrounded){
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             }
             
+            if(Input.GetButtonDown("TCM")){
+                constructionMode = !constructionMode;
+            }
 
             /*_______________________________PEW PEW_____________________________*/
-
+            
             //Fire command
-            if (Input.GetButtonDown("Fire1"))
-            {
-                CmdFire();
+            if (Input.GetButtonDown("Fire1")){
+                if(constructionMode){
+                    CmdBuild();
+                }
+                else{
+                    CmdFire1();
+                }
+            }
+
+            if (Input.GetButtonDown("Fire2")){
+                if(constructionMode){
+                    CmdDestroy();
+                }
+                else{
+                    CmdFire2();
+                }
             }
         }
     }
 
     //Change lock state of cursor
-   void ChangeCursorLockState()
+    void ChangeCursorLockState()
     {
-        if (Cursor.lockState == CursorLockMode.None)
-        {
+        if (Cursor.lockState == CursorLockMode.None){
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;   //Masque la souris quand le curseur est vérouillé
         }
-        else
-        {
+        else{
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
@@ -110,27 +115,23 @@ public class PlayerController : NetworkBehaviour
     //Change movement speed
     void ChangeSpeed()
     {
-        if(currentSpeed == 5f)
-        {
+        if(currentSpeed == 5f){
             currentSpeed = 8f;
         }
-        else
-        {
+        else{
             currentSpeed = 5f;
         }
     }
 
     // Client --> Server
     [Command]
-    void CmdFire(){
+    void CmdFire1(){
         //Create the bullet
         var bullet = (GameObject)Instantiate(
             bulletPrefab,
             bulletSpawn.position,
             bulletSpawn.rotation);
         
-        
-
         //Spawn the bullet on clients
         NetworkServer.Spawn(bullet);
 
@@ -138,8 +139,7 @@ public class PlayerController : NetworkBehaviour
         Destroy(bullet, 0.2f);
         
         //Play the particle
-        if(!gunParticle.isPlaying)
-        {
+        if(!gunParticle.isPlaying){
             RpcStartParticles();
         }
 
@@ -154,6 +154,30 @@ public class PlayerController : NetworkBehaviour
             }               
         }*/
     }
+    [Command]
+    void CmdFire2(){}
+
+
+
+
+
+
+    [Command]
+    void CmdBuild(){
+        GameObject aimed = getAimingObject();
+        if(aimed != null && aimed.tag == "TurretSpawnPoints"){
+            aimed.GetComponent<TurretSpawning>().spawn = true;
+        }
+    }
+    [Command]
+    void CmdDestroy(){
+        GameObject aimed = getAimingObject();
+        if(aimed != null && aimed.tag == "TurretSpawnPoints"){
+            aimed.GetComponent<TurretSpawning>().destroy = true;
+        }
+    }
+
+
 
     //Server --> Client
     [ClientRpc]
@@ -168,21 +192,26 @@ public class PlayerController : NetworkBehaviour
 
     //Enable camera and audioListener on connection of the player
     public override void OnStartLocalPlayer(){
-
         GetComponent<MeshRenderer>().material.color = Color.blue;
         if(!myCam.enabled || !myAudioListener.enabled || !myCanvas){
             myCanvas.gameObject.SetActive(true);
             myCam.enabled = true;
             myAudioListener.enabled = true;
         }
-
     }
 
-    public void OnClickButton()
-    {   
-        
+    public void OnClickButton(){   
         SceneManager.LoadScene("MainMenu");
-        
     }
 
+    public GameObject getAimingObject(){
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+        if(Physics.Raycast(ray, out hit, 7.5f)){
+            return hit.transform.gameObject;
+        }
+        else{
+            return null;
+        }
+    }
 }

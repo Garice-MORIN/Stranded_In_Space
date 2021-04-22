@@ -71,8 +71,7 @@ public class Health : NetworkBehaviour
 
     public void OnChangeHealth(int oldHealth, int newHealth)
     {
-        HPBar.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newHealth);
-        //HPBar.sizeDelta = new Vector2(newHealth, HPBar.sizeDelta.y);  //Actualise la taille de la barre de vie 
+        HPBar.sizeDelta = new Vector2(newHealth, HPBar.sizeDelta.y);  //Actualise la taille de la barre de vie 
     }
 
 }

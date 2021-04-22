@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Audio;
 using UnityEngine.UI;
-using Mirror;
 
 public class MainMenu : MonoBehaviour
 {
@@ -11,16 +9,19 @@ public class MainMenu : MonoBehaviour
     public Slider volumeSlider;
     public Slider effectSlider;
     public GameObject anchor;
-    //Animator animator;
-    //public Slider sensitivitySlider;
-    public float sensitivity;
+    public Slider sensitivitySlider;
+    public int inverted = 1;
+    public Variables mouseParameters;
 
     private void Start()
     {
         volumeSlider.value = 0.5f;
         audioSource.volume = 0.5f;
         effectSlider.value = 0.5f;
-        //Screen.fullScreen = true;
+        sensitivitySlider.value = 1500;
+        mouseParameters.inverted = 1;
+        mouseParameters.mouseSensitivity = 1500;
+        
     }
 
     public void OnExitButton()
@@ -57,7 +58,7 @@ public class MainMenu : MonoBehaviour
     public void OnVolumeValueChanged()
     {
         audioSource.volume = volumeSlider.value;
-        //Debug.Log(audioSource.volume);
+        mouseParameters.musicVolume = volumeSlider.value;
     }
 
     public void OnEffectValueChanged()
@@ -65,10 +66,14 @@ public class MainMenu : MonoBehaviour
         effectSource.volume = effectSlider.value;
     }
 
-
-    /*public void OnSensitivityChanged() //Currently not working 
+    public void OnToggleChanged()
     {
-        float truncaturedValue = Mathf.Round(sensitivitySlider.value * 100f) / 100f;
-        sensitivity = truncaturedValue * 1500f;
-    }*/
+        mouseParameters.inverted = mouseParameters.inverted == 1 ? -1 : 1;
+    }
+
+
+    public void OnSensitivityChanged()
+    {
+        mouseParameters.mouseSensitivity = sensitivitySlider.value;
+    }
 }

@@ -11,33 +11,24 @@ public class MainMenu : MonoBehaviour
     public GameObject anchor;
     public Slider sensitivitySlider;
     public int inverted = 1;
-    public Variables mouseParameters;
+    public Variables variables;
+    public Text musicLevel;
+    public Text effectlevel;
 
     private void Start()
     {
         volumeSlider.value = 0.5f;
         audioSource.volume = 0.5f;
         effectSlider.value = 0.5f;
-        sensitivitySlider.value = 1500;
-        mouseParameters.inverted = 1;
-        mouseParameters.mouseSensitivity = 1500;
-        
+        sensitivitySlider.value = 1125;
+        variables.inverted = 1;
+        musicLevel.text = "50 %";
+        effectlevel.text = "50 %";
     }
 
     public void OnExitButton()
     {
         Application.Quit();
-    }
-
-    public void HideAnchor()
-    {
-        GetComponent<Animator>().Play("Normal");
-        anchor.SetActive(false);
-    }
-
-    public void ShowAnchor()
-    {
-        anchor.SetActive(true);
     }
 
     public void OnStartButton()
@@ -58,22 +49,25 @@ public class MainMenu : MonoBehaviour
     public void OnVolumeValueChanged()
     {
         audioSource.volume = volumeSlider.value;
-        mouseParameters.musicVolume = volumeSlider.value;
+        variables.musicVolume = volumeSlider.value;
+        musicLevel.text = Mathf.FloorToInt(volumeSlider.value * 100) + " %";
     }
 
     public void OnEffectValueChanged()
     {
         effectSource.volume = effectSlider.value;
+        variables.effectVolume = effectSlider.value;
+        effectlevel.text = Mathf.FloorToInt(effectSlider.value * 100) + " %";
     }
 
     public void OnToggleChanged()
     {
-        mouseParameters.inverted = mouseParameters.inverted == 1 ? -1 : 1;
+        variables.inverted = variables.inverted == 1 ? -1 : 1;
     }
 
 
     public void OnSensitivityChanged()
     {
-        mouseParameters.mouseSensitivity = sensitivitySlider.value;
+        variables.mouseSensitivity = sensitivitySlider.value;
     }
 }

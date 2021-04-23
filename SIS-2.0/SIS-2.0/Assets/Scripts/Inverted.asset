@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21989e243ce38b64499c9a53dc170a4a, type: 3}
   m_Name: Inverted
   m_EditorClassIdentifier: 
-  inverted: 0
+  inverted: 1
+  mouseSensitivity: 1125
+  musicVolume: 0.5

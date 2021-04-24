@@ -166,7 +166,7 @@ public class PlayerController : NetworkBehaviour
     void CmdBuild(){
         GameObject aimed = getAimingObject();
         if(aimed != null && aimed.tag == "TurretSpawnPoints"){
-            aimed.GetComponent<TurretSpawning>().spawn = true;
+            aimed.GetComponent<TurretSpawning>().upgrade = true;
         }
     }
     [Command]

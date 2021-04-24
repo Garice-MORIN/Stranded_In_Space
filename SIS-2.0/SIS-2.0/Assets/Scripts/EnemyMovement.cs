@@ -19,6 +19,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void Update()
     {
+        // Attaque la tour si l'ennemi est assez près
         if(cooldown <= 0)
         {
             AttackTower();

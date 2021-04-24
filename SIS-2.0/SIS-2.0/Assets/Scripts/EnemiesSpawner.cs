@@ -26,6 +26,7 @@ public class EnemiesSpawner : NetworkBehaviour
         
     }
 
+    //Locate spawn file
     public void ChoosePath()
     {
         if(Application.isPlaying)
@@ -38,6 +39,7 @@ public class EnemiesSpawner : NetworkBehaviour
         }
     }
 
+    //Spawn next wave if there is at least one left
     public void TrySpawningNextWave()
     {
         if(enemiesLeft == 0)

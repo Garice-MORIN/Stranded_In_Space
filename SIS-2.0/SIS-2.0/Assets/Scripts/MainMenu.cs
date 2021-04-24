@@ -60,7 +60,7 @@ public class MainMenu : MonoBehaviour
         effectlevel.text = Mathf.FloorToInt(effectSlider.value * 100) + " %";
     }
 
-    public void OnToggleChanged()
+    public void OnToggleChanged() //Coefficient qui permet d'inverser la souris
     {
         variables.inverted = variables.inverted == 1 ? -1 : 1;
     }

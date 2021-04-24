@@ -87,12 +87,12 @@ public class PlayerController : NetworkBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
                 shot.SetPosition(0, muzzle.position);
-                CmdTryShoot(muzzle.position,Camera.main.transform.forward, gunRange);
+                CmdTryShoot(muzzle.position,Camera.main.transform.forward, gunRange); //Appel du serveur pour faire apparaitre Raycat + LineRenderer
                 shot.enabled = true;
                 shotDuration = 1;
                 //CmdFire();
             }
-            shotDuration = shotDuration > 0f ? shotDuration - Time.deltaTime : 0f;
+            shotDuration = shotDuration > 0f ? shotDuration - Time.deltaTime : 0f; //Efface le LineRenderer au bout d'une seconde 
             shot.enabled = !(shotDuration == 0f);
 
         }
@@ -116,18 +116,21 @@ public class PlayerController : NetworkBehaviour
     //Change movement speed
     void ChangeSpeed()
     {
-        if(currentSpeed == 5f)
+        /*if(currentSpeed == 5f)
         {
             currentSpeed = 8f;
         }
         else
         {
             currentSpeed = 5f;
-        }
+        }*/
+        currentSpeed = currentSpeed == 5f ? 8f : 5f;
     }
 
     // Client --> Server
-    //[Command]
+    
+    //Deprecated function
+    //[Command] 
     /*void CmdFire(){
         //Create the bullet
         var bullet = (GameObject)Instantiate(
@@ -164,6 +167,7 @@ public class PlayerController : NetworkBehaviour
     [Command]
     void CmdTryShoot(Vector3 origin, Vector3 direction, float range)
     {
+        // Création d'un raycast et d'un LineRenderer simultanément
         Ray ray = new Ray(origin, direction);
         Vector3 endPosition = origin + (range * direction);
         RaycastHit hit;

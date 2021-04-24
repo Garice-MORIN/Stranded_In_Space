@@ -5,13 +5,24 @@ using Mirror;
 public class TurretAI : NetworkBehaviour
 {
     public float range;
+    public float attackDelay;
+    public float cooldown;
     public int damage;
     public int targetPerAttack;
     private GameObject[] enemiesLeft;
-
+    
+    void Start(){
+        cooldown = attackDelay;
+    }
     void Update(){
-        enemiesLeft = GameObject.FindGameObjectsWithTag("Enemy");
-        Shoot(Aim());
+        if(cooldown <= 0){
+            enemiesLeft = GameObject.FindGameObjectsWithTag("Enemy");
+            Shoot(Aim());
+            cooldown = attackDelay;
+        }
+        else{
+            cooldown -= Time.deltaTime;
+        }
     }
 
     GameObject Aim(){

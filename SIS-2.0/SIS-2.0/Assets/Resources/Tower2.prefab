@@ -427,5 +427,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   range: 10
+  attackDelay: 1.5
+  cooldown: 0
   damage: 10
   targetPerAttack: 1

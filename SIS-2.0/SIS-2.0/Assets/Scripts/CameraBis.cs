@@ -11,7 +11,6 @@ public class CameraBis : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(variables.mouseSensitivity);
         Cursor.lockState = CursorLockMode.Locked;    //Lock le curseur au milieu de l'écran au moment de la connexion
     }
 

@@ -573,7 +573,7 @@ MonoBehaviour:
   anchor: {fileID: 0}
   sensitivitySlider: {fileID: 0}
   inverted: 1
-  mouseParameters: {fileID: 0}
+  variables: {fileID: 0}
   musicLevel: {fileID: 0}
   effectlevel: {fileID: 0}
 --- !u!1 &34968667
@@ -5742,7 +5742,7 @@ MonoBehaviour:
   anchor: {fileID: 1647330469}
   sensitivitySlider: {fileID: 1964409433}
   inverted: 1
-  mouseParameters: {fileID: 11400000, guid: 7fd782f8c73b5784c9ad2f525d97120c, type: 2}
+  variables: {fileID: 11400000, guid: 7fd782f8c73b5784c9ad2f525d97120c, type: 2}
   musicLevel: {fileID: 1575771290}
   effectlevel: {fileID: 2046325093}
 --- !u!1 &1668980938

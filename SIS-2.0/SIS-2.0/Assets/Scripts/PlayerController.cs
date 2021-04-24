@@ -9,19 +9,24 @@ public class PlayerController : NetworkBehaviour
     public GameObject myCanvas;
     public LayerMask mask;
     public Transform MeleeRangeCheck;
-    public float gunRange = 100000f;
+    public float gunRange = 500f;
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
     public ParticleSystem gunParticle;
     public CharacterController controller;
     public Transform groundCheck;
     public Transform playerBody;
+    public Transform muzzle;
+    public int gunDamage  = 10;
+    public LineRenderer shot;
 
     float currentSpeed = 5f;
     bool isGrounded;
     Vector3 velocity;
     float gravity = -19.62f;
     float jumpHeight = 2f;
+    float shotWidth = 0.1f;
+    float shotDuration = 1f;
 
 
     void Update()
@@ -31,7 +36,6 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
-        
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
@@ -45,7 +49,6 @@ public class PlayerController : NetworkBehaviour
             ChangeCursorLockState();
         }
 
-        
         if (Cursor.lockState == CursorLockMode.Locked)
         {
 
@@ -83,8 +86,15 @@ public class PlayerController : NetworkBehaviour
             //Fire command
             if (Input.GetButtonDown("Fire1"))
             {
-                CmdFire();
+                shot.SetPosition(0, muzzle.position);
+                CmdTryShoot(muzzle.position,Camera.main.transform.forward, gunRange);
+                shot.enabled = true;
+                shotDuration = 1;
+                //CmdFire();
             }
+            shotDuration = shotDuration > 0f ? shotDuration - Time.deltaTime : 0f;
+            shot.enabled = !(shotDuration == 0f);
+
         }
     }
 
@@ -117,8 +127,8 @@ public class PlayerController : NetworkBehaviour
     }
 
     // Client --> Server
-    [Command]
-    void CmdFire(){
+    //[Command]
+    /*void CmdFire(){
         //Create the bullet
         var bullet = (GameObject)Instantiate(
             bulletPrefab,
@@ -148,7 +158,25 @@ public class PlayerController : NetworkBehaviour
             {
                 target.GetComponent<Health>().TakeDamage(10);
             }               
-        }*/
+        }
+    }*/
+
+    [Command]
+    void CmdTryShoot(Vector3 origin, Vector3 direction, float range)
+    {
+        Ray ray = new Ray(origin, direction);
+        Vector3 endPosition = origin + (range * direction);
+        RaycastHit hit;
+        if (Physics.Raycast(ray,out hit,range,mask))
+        {
+            endPosition = hit.point;
+            if(hit.collider.tag == "Enemy")
+            {
+                hit.collider.GetComponent<Health>().TakeDamage(20);
+            }
+        }
+        
+        shot.SetPosition(1, endPosition);
     }
 
     //Server --> Client
@@ -171,7 +199,10 @@ public class PlayerController : NetworkBehaviour
             myCam.enabled = true;
             myAudioListener.enabled = true;
         }
-
+        Vector3[] initShotPosition = new Vector3[2] { Vector3.zero, Vector3.zero };
+        shot.SetPositions(initShotPosition);
+        shot.startWidth = shotWidth;
+        shot.endWidth = shotWidth;
     }
 
     public void OnClickButton()

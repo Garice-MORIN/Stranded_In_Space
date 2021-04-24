@@ -36,7 +36,6 @@ public class Health : NetworkBehaviour
         {
             return;
         }
-
         health -= damage;
 
         if(health <= 0){

@@ -18,9 +18,9 @@ public class TurretSpawning : NetworkBehaviour
     private Vector3 position;
     private Quaternion orientation;
     void Start(){
-        towerPrefab1 = Resources.Load("Tower1") as GameObject;
-        towerPrefab2 = Resources.Load("Tower2") as GameObject;
-        towerPrefab3 = Resources.Load("Tower3") as GameObject;
+        towerPrefab1 = Resources.Load("Basic1") as GameObject;
+        towerPrefab2 = Resources.Load("Basic2") as GameObject;
+        towerPrefab3 = Resources.Load("Basic3") as GameObject;
         position = transform.position + new Vector3(0, 2.5f, 0);
         orientation = Quaternion.Euler(0f, 0f, 0f);
     }

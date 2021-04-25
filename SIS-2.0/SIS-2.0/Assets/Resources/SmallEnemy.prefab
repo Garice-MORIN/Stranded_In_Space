@@ -831,6 +831,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   enemyPosition: {fileID: 6931518593030710512}
+  damage: 0
 --- !u!1 &6931518593540281585
 GameObject:
   m_ObjectHideFlags: 0

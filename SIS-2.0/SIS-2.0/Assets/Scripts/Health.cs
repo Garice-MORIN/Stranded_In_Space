@@ -6,13 +6,12 @@ using Mirror;
 
 public class Health : NetworkBehaviour
 {
-    public int maxHP;// = 100;
+    public const int maxHP = 100;
 
     [SyncVar(hook = "OnChangeHealth")]
-    public int health;// = maxHP; 
+    public int health = maxHP; 
 
     public RectTransform HPBar;
-    public RectTransform background;
 
     public bool destroyOnDeath;
 
@@ -20,14 +19,10 @@ public class Health : NetworkBehaviour
 
     private void Start()
     {
-        health = maxHP;
         if(isLocalPlayer)
         {
             spawnPoints = FindObjectsOfType<NetworkStartPosition>();
         }
-        background.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, maxHP);
-        HPBar.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, maxHP);
-        HPBar.localPosition = new Vector3(maxHP/2, 0, 0);
     }
 
     public void TakeDamage(int damage)
@@ -36,6 +31,7 @@ public class Health : NetworkBehaviour
         {
             return;
         }
+
         health -= damage;
 
         if(health <= 0){

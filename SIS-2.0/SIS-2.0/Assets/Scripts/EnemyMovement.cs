@@ -19,7 +19,6 @@ public class EnemyMovement : MonoBehaviour
 
     public void Update()
     {
-        // Attaque la tour si l'ennemi est assez près
         if(cooldown <= 0)
         {
             AttackTower();
@@ -33,7 +32,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void AttackTower()
     {
-        colliders = Physics.OverlapSphere(enemyPosition.position, 2.0f, mask);
+        colliders = Physics.OverlapSphere(enemyPosition.position, 1.0f, mask);
         foreach(var obj in colliders)
         {
             obj.GetComponent<Health>().TakeDamage(damage);

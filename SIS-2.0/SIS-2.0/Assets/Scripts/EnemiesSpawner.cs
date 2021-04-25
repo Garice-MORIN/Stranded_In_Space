@@ -9,6 +9,8 @@ public class EnemiesSpawner : NetworkBehaviour
     GameObject enemyPrefab;
     public LayerMask mask;
 
+    public int enemiesNumber = 4;
+
     [SyncVar(hook = "OnChangeEnemiesLeft")]
     public int enemiesLeft = 0;
 
@@ -22,11 +24,11 @@ public class EnemiesSpawner : NetworkBehaviour
         CreateSpawnList();
 
         allSpawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoints");
+
         LoadEnemies();
         
     }
 
-    //Locate spawn file
     public void ChoosePath()
     {
         if(Application.isPlaying)
@@ -39,7 +41,6 @@ public class EnemiesSpawner : NetworkBehaviour
         }
     }
 
-    //Spawn next wave if there is at least one left
     public void TrySpawningNextWave()
     {
         if(enemiesLeft == 0)
@@ -70,10 +71,10 @@ public class EnemiesSpawner : NetworkBehaviour
             var toSpawn = (GameObject)Instantiate(enemyPrefab, position, orientation);
 
             NetworkServer.Spawn(toSpawn);
-            i = (i+1)%4;
+            i++;
             enemiesLeft++;
         }
-        //enemiesLeft = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        enemiesLeft = GameObject.FindGameObjectsWithTag("Enemy").Length;
     }
 
     void CreateSpawnList()

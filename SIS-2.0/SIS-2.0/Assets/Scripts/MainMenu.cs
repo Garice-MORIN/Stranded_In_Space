@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 using UnityEngine.UI;
+using Mirror;
 
 public class MainMenu : MonoBehaviour
 {
@@ -8,22 +10,15 @@ public class MainMenu : MonoBehaviour
     public AudioSource effectSource;
     public Slider volumeSlider;
     public Slider effectSlider;
-    public GameObject anchor;
-    public Slider sensitivitySlider;
-    public int inverted = 1;
-    public Variables variables;
-    public Text musicLevel;
-    public Text effectlevel;
+    //public Slider sensitivitySlider;
+    public float sensitivity;
 
     private void Start()
     {
         volumeSlider.value = 0.5f;
         audioSource.volume = 0.5f;
         effectSlider.value = 0.5f;
-        sensitivitySlider.value = 1125;
-        variables.inverted = 1;
-        musicLevel.text = "50 %";
-        effectlevel.text = "50 %";
+        Screen.fullScreen = false;
     }
 
     public void OnExitButton()
@@ -33,7 +28,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnStartButton()
     {
-        SceneManager.LoadScene("FinalMap");
+        SceneManager.LoadScene("TestMap");
     }
 
     public void TestMapButton()
@@ -49,25 +44,18 @@ public class MainMenu : MonoBehaviour
     public void OnVolumeValueChanged()
     {
         audioSource.volume = volumeSlider.value;
-        variables.musicVolume = volumeSlider.value;
-        musicLevel.text = Mathf.FloorToInt(volumeSlider.value * 100) + " %";
+        //Debug.Log(audioSource.volume);
     }
 
     public void OnEffectValueChanged()
     {
         effectSource.volume = effectSlider.value;
-        variables.effectVolume = effectSlider.value;
-        effectlevel.text = Mathf.FloorToInt(effectSlider.value * 100) + " %";
     }
 
-    public void OnToggleChanged() //Coefficient qui permet d'inverser la souris
+
+    /*public void OnSensitivityChanged() //Currently not working 
     {
-        variables.inverted = variables.inverted == 1 ? -1 : 1;
-    }
-
-
-    public void OnSensitivityChanged()
-    {
-        variables.mouseSensitivity = sensitivitySlider.value;
-    }
+        float truncaturedValue = Mathf.Round(sensitivitySlider.value * 100f) / 100f;
+        sensitivity = truncaturedValue * 1500f;
+    }*/
 }

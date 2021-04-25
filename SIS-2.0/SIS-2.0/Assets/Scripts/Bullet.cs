@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//DEPRECATED
 public class Bullet : MonoBehaviour
 {
     void OnCollisionEnter(Collision collision){
@@ -11,7 +12,7 @@ public class Bullet : MonoBehaviour
 
         if(HP != null){
             //Take damage
-            HP.TakeDamage(10);
+            HP.TakeDamage(50);
         }
         Destroy(gameObject);
     }

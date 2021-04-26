@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using Mirror;
 
 public class PlayerController : NetworkBehaviour
@@ -12,7 +9,7 @@ public class PlayerController : NetworkBehaviour
     public GameObject myCanvas;
     public LayerMask mask;
     public Transform MeleeRangeCheck;
-    public float gunRange = 100000f;
+    public float gunRange = 500f;
     public GameObject towerPrefab;
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
@@ -20,6 +17,9 @@ public class PlayerController : NetworkBehaviour
     public CharacterController controller;
     public Transform groundCheck;
     public Transform playerBody;
+    public Transform muzzle;
+    public int gunDamage  = 10;
+    public LineRenderer shot;
 
     float currentSpeed = 5f;
     bool isGrounded;
@@ -27,12 +27,17 @@ public class PlayerController : NetworkBehaviour
     Vector3 velocity;
     float gravity = -19.62f;
     float jumpHeight = 2f;
+    float shotWidth = 0.1f;
+    float shotDuration = 1f;
 
-    void Update(){
-        if(!isLocalPlayer){
+
+    void Update()
+    {
+        if(!isLocalPlayer)
+        {
             return;
         }
-        
+
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
@@ -41,12 +46,18 @@ public class PlayerController : NetworkBehaviour
         controller.Move(velocity * Time.deltaTime);
         
         //Change the state of the cursor
-        if (Input.GetButtonDown("Cursor")){
-            ChangeCursorLockState(); 
+        if (Input.GetButtonDown("Cursor"))
+        {
+            ChangeCursorLockState();
+        }
+        if (Input.GetButtonDown("TCM"))
+        {
+            constructionMode = !constructionMode;
         }
 
-        
-        if (Cursor.lockState == CursorLockMode.Locked){
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+
             /*____________________________MOUSE CAMERA________________________________*/
 
             myCam.GetComponent<CameraBis>().UpdateCamera();  //Update camera and capsule rotation
@@ -58,55 +69,80 @@ public class PlayerController : NetworkBehaviour
             controller.Move(move * currentSpeed * Time.deltaTime);
 
             //Run command
-            if (Input.GetButtonDown("Run") && isGrounded){
+            if (Input.GetButtonDown("Run") && isGrounded)
+            {
                 ChangeSpeed();
             }
 
             //Reset gravity 
-            if (isGrounded && velocity.y < 0){
+            if (isGrounded && velocity.y < 0)
+            {
                 velocity.y = -2f;
             }
 
             //Jump command
-            if(Input.GetButtonDown("Jump") && isGrounded){
+            if(Input.GetButtonDown("Jump") && isGrounded)
+            {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             }
-            
-            if(Input.GetButtonDown("TCM")){
-                constructionMode = !constructionMode;
-            }
+
 
             /*_______________________________PEW PEW_____________________________*/
-            
+
             //Fire command
-            if (Input.GetButtonDown("Fire1")){
-                if(constructionMode){
+            if (Input.GetButtonDown("Fire1"))
+            {
+                if (constructionMode)
+                {
                     CmdBuild();
                 }
-                else{
-                    CmdFire1();
+                else
+                {
+                    shot.SetPosition(0, muzzle.position);
+                    CmdTryShoot(muzzle.position, Camera.main.transform.forward, gunRange);
+                    shot.enabled = true;
+                    shotDuration = 1;
                 }
             }
 
-            if (Input.GetButtonDown("Fire2")){
-                if(constructionMode){
+            if (Input.GetButtonDown("Fire2"))
+            {
+                if (constructionMode)
+                {
                     CmdDestroy();
                 }
-                else{
-                    CmdFire2();
+                else
+                {
+                    shot.SetPosition(0, muzzle.position);
+                    CmdTryShoot(muzzle.position, Camera.main.transform.forward, gunRange);
+                    shot.enabled = true;
+                    shotDuration = 1;
                 }
             }
+           /* if (Input.GetButtonDown("Fire1"))
+            {
+                shot.SetPosition(0, muzzle.position);
+                CmdTryShoot(muzzle.position,Camera.main.transform.forward, gunRange); //Appel du serveur pour faire apparaitre Raycat + LineRenderer
+                shot.enabled = true;
+                shotDuration = 1;
+                //CmdFire();
+            }*/
+            shotDuration = shotDuration > 0f ? shotDuration - Time.deltaTime : 0f; //Efface le LineRenderer au bout d'une seconde 
+            shot.enabled = !(shotDuration == 0f);
+
         }
     }
 
     //Change lock state of cursor
-    void ChangeCursorLockState()
+   void ChangeCursorLockState()
     {
-        if (Cursor.lockState == CursorLockMode.None){
+        if (Cursor.lockState == CursorLockMode.None)
+        {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;   //Masque la souris quand le curseur est vérouillé
         }
-        else{
+        else
+        {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
@@ -115,23 +151,30 @@ public class PlayerController : NetworkBehaviour
     //Change movement speed
     void ChangeSpeed()
     {
-        if(currentSpeed == 5f){
+        /*if(currentSpeed == 5f)
+        {
             currentSpeed = 8f;
         }
-        else{
+        else
+        {
             currentSpeed = 5f;
-        }
+        }*/
+        currentSpeed = currentSpeed == 5f ? 8f : 5f;
     }
 
     // Client --> Server
-    [Command]
-    void CmdFire1(){
+    
+    //Deprecated function
+    //[Command] 
+    /*void CmdFire(){
         //Create the bullet
         var bullet = (GameObject)Instantiate(
             bulletPrefab,
             bulletSpawn.position,
             bulletSpawn.rotation);
         
+        
+
         //Spawn the bullet on clients
         NetworkServer.Spawn(bullet);
 
@@ -139,7 +182,8 @@ public class PlayerController : NetworkBehaviour
         Destroy(bullet, 0.2f);
         
         //Play the particle
-        if(!gunParticle.isPlaying){
+        if(!gunParticle.isPlaying)
+        {
             RpcStartParticles();
         }
 
@@ -152,32 +196,51 @@ public class PlayerController : NetworkBehaviour
             {
                 target.GetComponent<Health>().TakeDamage(10);
             }               
-        }*/
+        }
+    }*/
+
+    [Command]
+    void CmdTryShoot(Vector3 origin, Vector3 direction, float range)
+    {
+        // Création d'un raycast et d'un LineRenderer simultanément
+        if (!gunParticle.isPlaying)
+        {
+            RpcStartParticles();
+        }
+        Ray ray = new Ray(origin, direction);
+        Vector3 endPosition = origin + (range * direction);
+        RaycastHit hit;
+        if (Physics.Raycast(ray,out hit,range,mask))
+        {
+            endPosition = hit.point;
+            if(hit.collider.tag == "Enemy")
+            {
+                hit.collider.GetComponent<Health>().TakeDamage(20);
+            }
+        }
+        
+        shot.SetPosition(1, endPosition);
     }
-    [Command]
-    void CmdFire2(){}
-
-
-
-
-
 
     [Command]
-    void CmdBuild(){
+    void CmdBuild()
+    {
         GameObject aimed = getAimingObject();
-        if(aimed != null && aimed.tag == "TurretSpawnPoints"){
+        if (aimed != null && aimed.tag == "TurretSpawnPoints")
+        {
             aimed.GetComponent<TurretSpawning>().upgrade = true;
         }
     }
+
     [Command]
-    void CmdDestroy(){
+    void CmdDestroy()
+    {
         GameObject aimed = getAimingObject();
-        if(aimed != null && aimed.tag == "TurretSpawnPoints"){
+        if (aimed != null && aimed.tag == "TurretSpawnPoints")
+        {
             aimed.GetComponent<TurretSpawning>().destroy = true;
         }
     }
-
-
 
     //Server --> Client
     [ClientRpc]
@@ -192,26 +255,38 @@ public class PlayerController : NetworkBehaviour
 
     //Enable camera and audioListener on connection of the player
     public override void OnStartLocalPlayer(){
+
         GetComponent<MeshRenderer>().material.color = Color.blue;
         if(!myCam.enabled || !myAudioListener.enabled || !myCanvas){
             myCanvas.gameObject.SetActive(true);
             myCam.enabled = true;
             myAudioListener.enabled = true;
         }
+        Vector3[] initShotPosition = new Vector3[2] { Vector3.zero, Vector3.zero };
+        shot.SetPositions(initShotPosition);
+        shot.startWidth = shotWidth;
+        shot.endWidth = shotWidth;
     }
 
-    public void OnClickButton(){   
-        SceneManager.LoadScene("MainMenu");
-    }
-
-    public GameObject getAimingObject(){
+    public GameObject getAimingObject()
+    {
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
-        if(Physics.Raycast(ray, out hit, 7.5f)){
+        if (Physics.Raycast(ray, out hit, 7.5f))
+        {
             return hit.transform.gameObject;
         }
-        else{
+        else
+        {
             return null;
         }
     }
+
+    public void OnClickButton()
+    {   
+        
+        SceneManager.LoadScene("MainMenu");
+        
+    }
+
 }

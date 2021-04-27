@@ -11,6 +11,7 @@
 .menu {
     font-family: aoox;
     display: flex;
+    position: relative;
     justify-content: space-around;
     align-items: center;
     background-color: #222427;
@@ -18,7 +19,7 @@
 
 .submenu {
     position: absolute;
-    visibility: hidden; 
+    visibility: hidden;
     -moz-transition: all .2s;
     -webkit-transition: all .2s;
     transition: all .2s;

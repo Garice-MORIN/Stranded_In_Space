@@ -1972,9 +1972,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
+  PersistNetworkManagerToOfflineScene: 0
   runInBackground: 1
   autoStartServerBuild: 1
-  showDebugMessages: 0
   serverTickRate: 30
   serverBatching: 0
   serverBatchInterval: 0
@@ -1995,6 +1995,10 @@ MonoBehaviour:
   - {fileID: 8582630242344631816, guid: 13526dc160a496548ba9d4924ce049cd, type: 3}
   - {fileID: 6931518593030710514, guid: 6ec9d731cdddec545bd97f1cb0fdc0e1, type: 3}
   - {fileID: 3657620336170778691, guid: 258e25f7b8b12564d822ae4dfc133d3d, type: 3}
+  - {fileID: 9000190440345884112, guid: e0fdc35a1e667454d967455d9fed5fa1, type: 3}
+  - {fileID: 8913524930736230560, guid: f62f3cd8b5845b649847482303805b77, type: 3}
+  - {fileID: 3472940866351633763, guid: 8135ea9ea6ad275479bec721dd4326a2, type: 3}
+  - {fileID: 9000190440345884112, guid: 4bce869f072693a4c8228e961dd4989c, type: 3}
 --- !u!4 &550045063
 Transform:
   m_ObjectHideFlags: 0

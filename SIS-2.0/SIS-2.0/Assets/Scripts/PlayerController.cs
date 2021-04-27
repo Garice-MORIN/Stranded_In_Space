@@ -22,7 +22,6 @@ public class PlayerController : NetworkBehaviour
     public Transform playerBody;
     public GameObject pauseMenu;
     public GameObject scoreBoard;
-    public PauseMenu pause;
 
 
 
@@ -37,9 +36,6 @@ public class PlayerController : NetworkBehaviour
     {
         pauseMenu.SetActive(false);
         scoreBoard.SetActive(false);
-        pause.settingsMenu.SetActive(false);
-        pause.commandMenu.SetActive(false);
-        pause.commandMenu.transform.GetChild(5).gameObject.SetActive(false);
     }
     void Update()
     {

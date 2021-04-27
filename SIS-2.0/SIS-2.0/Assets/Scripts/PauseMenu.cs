@@ -11,11 +11,20 @@ public class PauseMenu : NetworkBehaviour
     public PlayerController playerController;
     public GameObject settingsMenu;
     public GameObject commandMenu;
+    AudioSource audioSource;
+    public AudioSource effectSource;
+    public Slider audioSlider;
+    public Slider effectSlider;
+    public MainMenu mainMenu;
 
-    private void Start()
-    {
+
+    void Start()
+    { 
         networkManager = NetworkManager.singleton;
-
+        audioSource = mainMenu.audioSource;
+        audioSlider = mainMenu.volumeSlider;
+        effectSource = mainMenu.effectSource;
+        effectSlider = mainMenu.effectSlider;
     }
 
     //Revenir menu principal
@@ -61,15 +70,26 @@ public class PauseMenu : NetworkBehaviour
 
     public void AzertyIsOn()
     { 
-        commandMenu.transform.GetChild(5).gameObject.SetActive(false); //Tableau Qwerty pas affiché
-        commandMenu.transform.GetChild(4).gameObject.SetActive(true);  //Tabbleau Azerty affiché
+        commandMenu.transform.GetChild(4).gameObject.SetActive(false); //Tableau Qwerty pas affiché
+        commandMenu.transform.GetChild(3).gameObject.SetActive(true);  //Tabbleau Azerty affiché
        // qwerty.isOn = false;
     }
 
     public void QwertyIsOn()
     {
-        commandMenu.transform.GetChild(4).gameObject.SetActive(false); //Tableau Azerty pas affiché
-        commandMenu.transform.GetChild(5).gameObject.SetActive(true);  //Tabbleau Qwerty affiché
+        commandMenu.transform.GetChild(3).gameObject.SetActive(false); //Tableau Azerty pas affiché
+        commandMenu.transform.GetChild(4).gameObject.SetActive(true);  //Tabbleau Qwerty affiché
         //azerty.isOn = false;
+    }
+
+    public void OnVolumeValueChanged()
+    {
+       audioSource.volume = audioSlider.value;
+        //Debug.Log(audioSource.volume);
+    }
+
+    public void OnEffectValueChanged()
+    {
+        effectSource.volume = effectSlider.value;
     }
 }

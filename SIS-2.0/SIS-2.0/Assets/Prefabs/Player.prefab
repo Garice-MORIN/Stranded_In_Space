@@ -607,6 +607,7 @@ MonoBehaviour:
   playerBody: {fileID: 4242103549478655201}
   pauseMenu: {fileID: 4271312663685459187}
   scoreBoard: {fileID: 1343020130143303599}
+  pause: {fileID: 3784030972913680319, guid: 78699eda292eed342a525243c754f2e2, type: 3}
 --- !u!114 &1863195092447118859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -994,6 +995,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4242103549478655201}
     m_Modifications:
+    - target: {fileID: 842779579397410760, guid: 4d8ffdd11f1279d47a468fdf50bc3f9e,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1261322305057248908}
     - target: {fileID: 897900630620800158, guid: 4d8ffdd11f1279d47a468fdf50bc3f9e,
         type: 3}
       propertyPath: m_AssetId

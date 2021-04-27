@@ -2,7 +2,6 @@
 using UnityEngine.SceneManagement;
 using Mirror;
 
-
 public class PlayerController : NetworkBehaviour
 {
     public Camera myCam;
@@ -21,11 +20,6 @@ public class PlayerController : NetworkBehaviour
     public Transform muzzle;
     public int gunDamage  = 10;
     public LineRenderer shot;
-    public GameObject pauseMenu;
-    public GameObject scoreBoard;
-
-
-
 
     float currentSpeed = 5f;
     bool isGrounded;
@@ -36,14 +30,10 @@ public class PlayerController : NetworkBehaviour
     float shotWidth = 0.1f;
     float shotDuration = 1f;
 
-    private void Start()
-    {
-        pauseMenu.SetActive(false);
-        scoreBoard.SetActive(false);
-    }
+
     void Update()
     {
-        if (!isLocalPlayer)
+        if(!isLocalPlayer)
         {
             return;
         }
@@ -54,8 +44,7 @@ public class PlayerController : NetworkBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, mask);  //Check if the player is on the ground (prevent infinite jumping)
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
-
-
+        
         //Change the state of the cursor
         if (Input.GetButtonDown("Cursor"))
         {
@@ -85,14 +74,14 @@ public class PlayerController : NetworkBehaviour
                 ChangeSpeed();
             }
 
-            //Reset gravity
+            //Reset gravity 
             if (isGrounded && velocity.y < 0)
             {
                 velocity.y = -2f;
             }
 
             //Jump command
-            if (Input.GetButtonDown("Jump") && isGrounded)
+            if(Input.GetButtonDown("Jump") && isGrounded)
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             }
@@ -138,21 +127,14 @@ public class PlayerController : NetworkBehaviour
                 shotDuration = 1;
                 //CmdFire();
             }*/
-            shotDuration = shotDuration > 0f ? shotDuration - Time.deltaTime : 0f; //Efface le LineRenderer au bout d'une seconde
+            shotDuration = shotDuration > 0f ? shotDuration - Time.deltaTime : 0f; //Efface le LineRenderer au bout d'une seconde 
             shot.enabled = !(shotDuration == 0f);
 
-            /*____________________________SCOREBOARD_____________________________*/
-
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                scoreBoard.SetActive(!scoreBoard.activeSelf);
-            } 
         }
-
     }
 
-    //Change lock state of cursor and display the pause menu
-    public void ChangeCursorLockState()
+    //Change lock state of cursor
+   void ChangeCursorLockState()
     {
         if (Cursor.lockState == CursorLockMode.None)
         {
@@ -164,10 +146,7 @@ public class PlayerController : NetworkBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-        pauseMenu.SetActive(!pauseMenu.activeSelf);
     }
-
-
 
     //Change movement speed
     void ChangeSpeed()
@@ -184,26 +163,26 @@ public class PlayerController : NetworkBehaviour
     }
 
     // Client --> Server
-
+    
     //Deprecated function
-    //[Command]
+    //[Command] 
     /*void CmdFire(){
         //Create the bullet
         var bullet = (GameObject)Instantiate(
             bulletPrefab,
             bulletSpawn.position,
             bulletSpawn.rotation);
-
-
+        
+        
 
         //Spawn the bullet on clients
         NetworkServer.Spawn(bullet);
 
         //Destroy the bullet after 1.0s
         Destroy(bullet, 0.2f);
-
+        
         //Play the particle
-        if (!gunParticle.isPlaying)
+        if(!gunParticle.isPlaying)
         {
             RpcStartParticles();
         }
@@ -216,7 +195,7 @@ public class PlayerController : NetworkBehaviour
             if(target != null)
             {
                 target.GetComponent<Health>().TakeDamage(10);
-            }
+            }               
         }
     }*/
 
@@ -239,7 +218,7 @@ public class PlayerController : NetworkBehaviour
                 hit.collider.GetComponent<Health>().TakeDamage(20);
             }
         }
-
+        
         shot.SetPosition(1, endPosition);
     }
 
@@ -266,23 +245,19 @@ public class PlayerController : NetworkBehaviour
     //Server --> Client
     [ClientRpc]
     //Both next functions : Start playing gun particles
-    public void RpcStartParticles()
-    {
+    public void RpcStartParticles(){
         StartParticles();
     }
 
-    public void StartParticles()
-    {
+    public void StartParticles(){
         gunParticle.Play();
     }
 
     //Enable camera and audioListener on connection of the player
-    public override void OnStartLocalPlayer()
-    {
+    public override void OnStartLocalPlayer(){
 
         GetComponent<MeshRenderer>().material.color = Color.blue;
-        if (!myCam.enabled || !myAudioListener.enabled || !myCanvas)
-        {
+        if(!myCam.enabled || !myAudioListener.enabled || !myCanvas){
             myCanvas.gameObject.SetActive(true);
             myCam.enabled = true;
             myAudioListener.enabled = true;
@@ -306,4 +281,12 @@ public class PlayerController : NetworkBehaviour
             return null;
         }
     }
+
+    public void OnClickButton()
+    {   
+        
+        SceneManager.LoadScene("MainMenu");
+        
+    }
+
 }

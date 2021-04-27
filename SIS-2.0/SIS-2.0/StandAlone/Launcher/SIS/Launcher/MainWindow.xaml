@@ -23,6 +23,9 @@
             </Button.Background>
         </Button>
         <ScrollViewer HorizontalAlignment="Left" Height="304" Margin="61,311,0,0" VerticalAlignment="Top" Width="666">
+            <ScrollViewer.Background>
+                <ImageBrush/>
+            </ScrollViewer.Background>
             <StackPanel>
                 <Label x:Name="last_actu" Content="Dernière actualité:" FontFamily="OCR A Extended" Foreground="#FFFFFF" FontSize="30"/>
                 <TextBlock x:Name="actu" Text="Lorem ipsum dolor sit amet." FontFamily="OCR A Extended" Foreground="#FFFFFF" FontSize="20" TextWrapping="WrapWithOverflow"/>

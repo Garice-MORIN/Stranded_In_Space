@@ -30,7 +30,7 @@ namespace Launcher
 
         public void SetActu()
         {
-            string url = "http://localhost/Projet/actus.txt";
+            string url = "http://strandedinspace/actus.txt";
             using (WebClient client = new WebClient())
             {
                 string actus = client.DownloadString(url);
@@ -39,7 +39,7 @@ namespace Launcher
                     actu.Text = actus;
                 }
             }
-            string url1 = "http://localhost/Projet/prevactus.txt";
+            string url1 = "http://strandedinspace/prevactus.txt";
             using (WebClient client = new WebClient())
             {
                 string actus = client.DownloadString(url1);

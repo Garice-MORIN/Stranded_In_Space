@@ -13,9 +13,20 @@
         <ul class="links">
             <li>
                 <a href="lejeu.html">Le jeu</a>
+                <ul class="submenu">
+                    <li> <a href="#histoire">- histoire</a></li>
+                    <li> <a href="#">- principe</a></li>
+                    <li> <a href="#">- avancement</a></li>
+                    <li> <a href="#">- jeu</a></li>
+                </ul>
             </li>
             <li>
-                <a href="#">L'histoire du groupe</a> 
+                <a href="histoire.html">L'histoire du groupe</a>
+                <ul class="submenu">
+                    <li> <a href="#">- Histoire</a></li>
+                    <li> <a href="#">- les membres</a></li>
+                    <li> <a href="#"></a></li>
+                </ul>
             </li>
             <li>
                 <a href="#">Highscores</a>
@@ -38,7 +49,7 @@
             <input type="submit" name="connexion" value="Connexion" />
         </form>
     </p>
-    <p>
+    <p class="cobutton">
         <a href="inscription.php">Pas encore inscrit ?</a>
     </p>
 </body>

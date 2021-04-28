@@ -125,9 +125,9 @@ public class PlayerController : NetworkBehaviour
                 else
                 {
                     shot.SetPosition(0, muzzle.position);
-                    CmdTryShoot(muzzle.position, Camera.main.transform.forward, gunRange);
+                    CmdTryShoot(myCam.transform.position, myCam.transform.forward, gunRange);
                     shot.enabled = true;
-                    shotDuration = 1;
+                    shotDuration = 0.5f;
                 }
             }
            /* if (Input.GetButtonDown("Fire1"))
@@ -184,18 +184,19 @@ public class PlayerController : NetworkBehaviour
             RpcStartParticles();
         }
         Ray ray = new Ray(origin, direction);
-        Vector3 endPosition = origin + (range * direction);
         RaycastHit hit;
         if (Physics.Raycast(ray,out hit,range,rayMask))
         {
-            endPosition = hit.point;
             if(hit.collider.tag == "Enemy")
             {
                 hit.collider.GetComponent<Health>().TakeDamage(20);
+                shot.SetPosition(1, hit.point);
             }
         }
-        
-        shot.SetPosition(1, endPosition);
+        else
+        {
+            shot.SetPosition(1, origin + (range * direction));
+        }
     }
 
     [Command]

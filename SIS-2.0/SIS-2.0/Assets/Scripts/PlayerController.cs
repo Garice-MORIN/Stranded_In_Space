@@ -20,6 +20,8 @@ public class PlayerController : NetworkBehaviour
     public Transform muzzle;
     public int gunDamage  = 10;
     public LineRenderer shot;
+    public GameObject pauseMenu;
+    public GameObject scoreBoard;
 
     float currentSpeed = 5f;
     bool isGrounded;
@@ -30,6 +32,11 @@ public class PlayerController : NetworkBehaviour
     float shotWidth = 0.1f;
     float shotDuration = 1f;
 
+    private void Start()
+    {
+        pauseMenu.SetActive(false);
+        scoreBoard.SetActive(false);
+    }
 
     void Update()
     {
@@ -134,7 +141,7 @@ public class PlayerController : NetworkBehaviour
     }
 
     //Change lock state of cursor
-   void ChangeCursorLockState()
+   public void ChangeCursorLockState()
     {
         if (Cursor.lockState == CursorLockMode.None)
         {
@@ -146,6 +153,7 @@ public class PlayerController : NetworkBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+        pauseMenu.SetActive(!pauseMenu.activeSelf);
     }
 
     //Change movement speed
@@ -287,6 +295,11 @@ public class PlayerController : NetworkBehaviour
         
         SceneManager.LoadScene("MainMenu");
         
+    }
+
+    public void _Debug()
+    {
+        Debug.Log("Hello");
     }
 
 }

@@ -174,41 +174,6 @@ public class PlayerController : NetworkBehaviour
     }
 
     // Client --> Server
-    
-    //Deprecated function
-    //[Command] 
-    /*void CmdFire(){
-        //Create the bullet
-        var bullet = (GameObject)Instantiate(
-            bulletPrefab,
-            bulletSpawn.position,
-            bulletSpawn.rotation);
-        
-        
-
-        //Spawn the bullet on clients
-        NetworkServer.Spawn(bullet);
-
-        //Destroy the bullet after 1.0s
-        Destroy(bullet, 0.2f);
-        
-        //Play the particle
-        if(!gunParticle.isPlaying)
-        {
-            RpcStartParticles();
-        }
-
-       /* RaycastHit _hit;
-        if (Physics.Raycast(myCam.transform.position, myCam.transform.forward, out _hit, gunRange, mask))
-        {
-            //Target target = _hit.transform.GetComponent<Target>();
-            Component target = _hit.transform.GetComponent<Health>();
-            if(target != null)
-            {
-                target.GetComponent<Health>().TakeDamage(10);
-            }               
-        }
-    }*/
 
     [Command]
     void CmdTryShoot(Vector3 origin, Vector3 direction, float range)

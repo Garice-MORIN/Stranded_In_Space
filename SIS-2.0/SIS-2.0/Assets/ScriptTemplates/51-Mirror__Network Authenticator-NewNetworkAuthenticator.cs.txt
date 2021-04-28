@@ -81,10 +81,10 @@ public class #SCRIPTNAME# : NetworkAuthenticator
     /// </summary>
     /// <param name="conn">Connection to client.</param>
     /// <param name="msg">The message payload</param>
-    public void OnAuthResponseMessage(AuthResponseMessage msg)
+    public void OnAuthResponseMessage(NetworkConnection conn, AuthResponseMessage msg)
     {
         // Authentication has been accepted
-        ClientAccept(NetworkClient.connection);
+        ClientAccept(conn);
     }
 
     #endregion

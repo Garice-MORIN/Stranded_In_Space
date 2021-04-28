@@ -31,7 +31,7 @@ namespace Mirror.Weaver
         {
             Register(typeReference, newWriterFunc);
 
-            Weaver.GeneratedCodeClass.Methods.Add(newWriterFunc);
+            Weaver.WeaveLists.generateContainerClass.Methods.Add(newWriterFunc);
         }
 
         /// <summary>

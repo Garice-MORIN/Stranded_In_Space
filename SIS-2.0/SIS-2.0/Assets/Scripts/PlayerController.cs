@@ -22,6 +22,8 @@ public class PlayerController : NetworkBehaviour
     public LineRenderer shot;
     public GameObject pauseMenu;
     public GameObject scoreBoard;
+    private NetworkManager networkManager;
+
 
     float currentSpeed = 5f;
     bool isGrounded;
@@ -36,6 +38,7 @@ public class PlayerController : NetworkBehaviour
     {
         pauseMenu.SetActive(false);
         scoreBoard.SetActive(false);
+        networkManager = NetworkManager.singleton;
     }
 
     void Update()
@@ -278,7 +281,7 @@ public class PlayerController : NetworkBehaviour
 
     public GameObject getAimingObject()
     {
-        Ray ray = new Ray(transform.position, transform.forward);
+        Ray ray = new Ray(myCam.transform.position, myCam.transform.forward);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 7.5f))
         {
@@ -297,9 +300,17 @@ public class PlayerController : NetworkBehaviour
         
     }
 
-    public void _Debug()
+    public void OnMainMenu()
     {
-        Debug.Log("Hello");
+        if (isClientOnly)
+        {
+            networkManager.StopClient();
+        }
+        else
+        {
+            networkManager.StopHost();
+        }
+        SceneManager.LoadScene("MainMenu");
     }
 
 }

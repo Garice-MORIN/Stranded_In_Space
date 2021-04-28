@@ -5,9 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Mirror;
 
-public class PauseMenu : NetworkBehaviour
+public class PauseMenu : MonoBehaviour
 {
-    private NetworkManager networkManager;
     public Variables variables;
     public PlayerController playerController;
     public GameObject settingsMenu;
@@ -16,16 +15,14 @@ public class PauseMenu : NetworkBehaviour
     public AudioSource effectSource;
     public Slider audioSlider;
     public Slider effectSlider;
-    public MainMenu mainMenu;
 
 
     void Start()
     { 
-        networkManager = NetworkManager.singleton;
         //audioSource = mainMenu.audioSource;
-        audioSlider = mainMenu.volumeSlider;
+        //audioSlider = mainMenu.volumeSlider;
         //effectSource = mainMenu.effectSource;
-        effectSlider = mainMenu.effectSlider;
+        //effectSlider = mainMenu.effectSlider;
     }
 
     public void _Debug()
@@ -34,18 +31,7 @@ public class PauseMenu : NetworkBehaviour
     }
 
     //Revenir menu principal
-    public void OnMainMenu()
-    {
-        if(isClientOnly)
-        {
-            networkManager.StopClient();
-        }
-        else
-        {
-            networkManager.StopHost();
-        }
-        SceneManager.LoadScene("MainMenu");
-    }
+    
 
     //Ouvrir Settings
     public void OnSettingsMenu()

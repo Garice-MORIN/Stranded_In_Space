@@ -409,8 +409,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  maxHP: 0
   health: 30
   HPBar: {fileID: 5060325479796799084}
+  background: {fileID: 5060325479995801550}
   destroyOnDeath: 1
 --- !u!114 &7013333575031039884
 MonoBehaviour:

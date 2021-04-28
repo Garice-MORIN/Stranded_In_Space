@@ -576,6 +576,7 @@ MonoBehaviour:
   variables: {fileID: 0}
   musicLevel: {fileID: 0}
   effectlevel: {fileID: 0}
+  networkManager: {fileID: 0}
 --- !u!1 &34968667
 GameObject:
   m_ObjectHideFlags: 0
@@ -3089,7 +3090,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1661218353}
-        m_MethodName: OnStartButton
+        m_MethodName: TestMapButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3101,6 +3102,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1388726121}
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 550045062}
+        m_MethodName: StartHost
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5749,6 +5761,7 @@ MonoBehaviour:
   variables: {fileID: 11400000, guid: 7fd782f8c73b5784c9ad2f525d97120c, type: 2}
   musicLevel: {fileID: 1575771290}
   effectlevel: {fileID: 2046325093}
+  networkManager: {fileID: 550045062}
 --- !u!1 &1668980938
 GameObject:
   m_ObjectHideFlags: 0

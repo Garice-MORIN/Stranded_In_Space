@@ -7,7 +7,8 @@ public class PlayerController : NetworkBehaviour
     public Camera myCam;
     public AudioListener myAudioListener;
     public GameObject myCanvas;
-    public LayerMask mask;
+    public LayerMask groundMask;
+    public LayerMask rayMask;
     public Transform MeleeRangeCheck;
     public float gunRange = 500f;
     public GameObject towerPrefab;
@@ -51,7 +52,7 @@ public class PlayerController : NetworkBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, mask);  //Check if the player is on the ground (prevent infinite jumping)
+        isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundMask);  //Check if the player is on the ground (prevent infinite jumping)
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
         
@@ -162,15 +163,14 @@ public class PlayerController : NetworkBehaviour
     //Change movement speed
     void ChangeSpeed()
     {
-        /*if(currentSpeed == 5f)
+        if(currentSpeed == 5f)
         {
             currentSpeed = 8f;
         }
         else
         {
             currentSpeed = 5f;
-        }*/
-        currentSpeed = currentSpeed == 5f ? 8f : 5f;
+        }
     }
 
     // Client --> Server
@@ -221,7 +221,7 @@ public class PlayerController : NetworkBehaviour
         Ray ray = new Ray(origin, direction);
         Vector3 endPosition = origin + (range * direction);
         RaycastHit hit;
-        if (Physics.Raycast(ray,out hit,range,mask))
+        if (Physics.Raycast(ray,out hit,range,rayMask))
         {
             endPosition = hit.point;
             if(hit.collider.tag == "Enemy")

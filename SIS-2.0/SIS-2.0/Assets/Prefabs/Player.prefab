@@ -4419,7 +4419,10 @@ MonoBehaviour:
   myAudioListener: {fileID: 4242103549988627683}
   myCanvas: {fileID: 7863667585867922898, guid: 4d8ffdd11f1279d47a468fdf50bc3f9e,
     type: 3}
-  mask:
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  rayMask:
     serializedVersion: 2
     m_Bits: 512
   MeleeRangeCheck: {fileID: 1971079720903899}

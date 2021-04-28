@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Mirror;
 
 public class MainMenu : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class MainMenu : MonoBehaviour
     public Variables variables;
     public Text musicLevel;
     public Text effectlevel;
+    public NetworkManager networkManager;
 
     private void Start()
     {
@@ -33,11 +35,13 @@ public class MainMenu : MonoBehaviour
 
     public void OnStartButton()
     {
+        networkManager.onlineScene = "FinalMap";
         SceneManager.LoadScene("FinalMap");
     }
 
     public void TestMapButton()
     {
+        networkManager.onlineScene = "TestMap";
         SceneManager.LoadScene("TestMap");
     }
 

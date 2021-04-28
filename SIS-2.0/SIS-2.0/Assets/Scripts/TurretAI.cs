@@ -17,6 +17,9 @@ public class TurretAI : NetworkBehaviour
     public float cooldown;
     public int damage;
     public int targetsPerAttack;
+    public float slowDuration;
+    public float slowPower;
+    public LayerMask mask;
     
     void Start(){
         cooldown = attackDelay;
@@ -48,27 +51,6 @@ public class TurretAI : NetworkBehaviour
             res[i] = random.Next(maxValue);
         }
         return res;
-    }
-    GameObject[] RemoveAt(GameObject[] source, int index){
-        if(source == null || index < 0 || index >= source.Length){
-            throw new ArgumentException("TurretAI.RemoveAt Exception");
-        }
-        GameObject[] dest = new GameObject[source.Length - 1];
-        for(int i = 0; i < index; i++){
-            dest[i] = source[i];
-        }
-        for(int i = index + 1; i < source.Length; i++){
-            dest[i - 1] = source[i];
-        }
-        return dest;
-    }
-    GameObject[] Add(GameObject[] source, GameObject added){
-        GameObject[] dest = new GameObject[source.Length + 1];
-        for(int i = 0; i < source.Length; i++){
-            dest[i] = source[i];
-        }
-        dest[source.Length] = added;
-        return dest;
     }
     void Shoot(GameObject enemy){
         if(enemy != null){
@@ -117,9 +99,11 @@ public class TurretAI : NetworkBehaviour
             i += 1;
         }
         if(maxEnemiesAtRange != 0){
+            int j = 0;
             GameObject[] enemiesAimed = new GameObject[targetsPerAttack];
             foreach(int enemyValue in GetRandomNumbers(maxEnemiesAtRange, targetsPerAttack)){
-                enemiesAimed = Add(enemiesAimed, enemiesLeft[enemyValue]);
+                enemiesAimed[j] = enemiesPossible[enemyValue];
+                j += 1;
             }
             return enemiesAimed;
         }
@@ -137,6 +121,48 @@ public class TurretAI : NetworkBehaviour
         }
     }
     void AttackFlamethrower(){}
-    void AttackSlow(){}
+    
+    void Slow(GameObject enemy){
+        if(enemy != null){
+            enemy.GetComponent<EnemyMovement>().slowDuration = slowDuration;
+            enemy.GetComponent<EnemyMovement>().slowPower = slowPower;
+            enemy.GetComponent<EnemyMovement>().slowed = true;
+        }
+    }
+    GameObject[] SlowAim(GameObject[] enemiesLeft){
+        int i = 0;
+        int maxEnemiesAtRange = 0;
+        GameObject[] enemiesPossible = new GameObject[enemiesLeft.Length];
+        while(i < enemiesLeft.Length){
+            Ray ray = new Ray(transform.position, enemiesLeft[i].transform.position - transform.position);
+            RaycastHit hit;
+            if(Physics.Raycast(ray, out hit, range)){
+                if(hit.transform.gameObject == enemiesLeft[i]){
+                    enemiesPossible[maxEnemiesAtRange] = enemiesLeft[i];
+                    maxEnemiesAtRange += 1;
+                }
+            }
+            i += 1;
+        }
+        if(maxEnemiesAtRange != 0){
+            GameObject[] enemiesAimed = new GameObject[maxEnemiesAtRange];
+            for(int j = 0; j < maxEnemiesAtRange; j++){
+                enemiesAimed[j] = enemiesPossible[j];
+            }
+            return enemiesAimed;
+        }
+        return new GameObject[] {null};
+    }
+    void AttackSlow(){
+        if(cooldown <= 0){
+            foreach(GameObject enemy in SlowAim(GameObject.FindGameObjectsWithTag("Enemy"))){
+                Slow(enemy);
+            }
+            cooldown = attackDelay;
+        }
+        else{
+            cooldown -= Time.deltaTime;
+        }
+    }
 
 }

@@ -219,7 +219,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneId: 0
   serverOnly: 0
-  visible: 0
   m_AssetId: 
   hasSpawned: 0
 --- !u!114 &170188676883244125
@@ -297,7 +296,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   enemyPosition: {fileID: 170188676883244101}
+  navMesh: {fileID: 7880699171596970845}
   damage: 20
+  attackCooldown: 1
 --- !u!1 &624283177714911131
 GameObject:
   m_ObjectHideFlags: 0

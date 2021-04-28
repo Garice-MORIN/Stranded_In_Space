@@ -5,38 +5,54 @@ public class EnemyMovement : MonoBehaviour
 {
     public LayerMask mask;
     public Transform enemyPosition;
+    public NavMeshAgent navMesh;
     public int damage;
     Collider[] colliders;
     Transform goal;
-    float cooldown = 1;
-    // Start is called before the first frame update
+    public float attackCooldown;
+    public bool slowed;
+    public float baseSpeed;
+    public float slowDuration;
+    public float slowPower;
     void Start()
     {
-        NavMeshAgent navMesh = GetComponent<NavMeshAgent>();
         goal = GameObject.FindGameObjectWithTag("Tower").transform;
         navMesh.destination = goal.position;
+        baseSpeed = navMesh.speed;
     }
 
     public void Update()
     {
         // Attaque la tour si l'ennemi est assez près
-        if(cooldown <= 0)
-        {
-            AttackTower();
-            cooldown = 1;
-        }
-        else
-        {
-            cooldown -= Time.deltaTime;
-        }
+        CheckAttack();
+        CheckSlow();
     }
 
-    public void AttackTower()
-    {
+    void CheckAttack(){
+        if(attackCooldown <= 0){
+            AttackTower();
+            attackCooldown = 1;
+        }
+        else{
+            attackCooldown -= Time.deltaTime;
+        }
+    }
+    void AttackTower(){
         colliders = Physics.OverlapSphere(enemyPosition.position, 2.0f, mask);
-        foreach(var obj in colliders)
-        {
+        foreach(var obj in colliders){
             obj.GetComponent<Health>().TakeDamage(damage);
+        }
+    }
+    void CheckSlow(){
+        if(slowed){
+            navMesh.speed = baseSpeed * slowPower;
+            slowed = false;
+        }
+        if(slowDuration <= 0){
+            navMesh.speed = baseSpeed;
+        }
+        else{
+            slowDuration -= Time.deltaTime;
         }
     }
 }

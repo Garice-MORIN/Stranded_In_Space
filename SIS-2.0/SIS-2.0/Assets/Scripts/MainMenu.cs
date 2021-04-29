@@ -12,7 +12,6 @@ public class MainMenu : MonoBehaviour
     public GameObject anchor;
     public Slider sensitivitySlider;
     public int inverted = 1;
-    public Variables variables;
     public Text musicLevel;
     public Text effectlevel;
     public NetworkManager networkManager;
@@ -20,12 +19,14 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         volumeSlider.value = 0.5f;
-        audioSource.volume = 0.5f;
         effectSlider.value = 0.5f;
-        sensitivitySlider.value = 1125;
-        variables.inverted = 1;
         musicLevel.text = "50 %";
         effectlevel.text = "50 %";
+        PlayerPrefs.SetFloat("Music", 0.5f);
+        PlayerPrefs.SetFloat("Effects", 0.5f);
+        PlayerPrefs.SetInt("Inverted", 1);
+        PlayerPrefs.SetFloat("Sensi", 1125);
+
     }
 
     public void OnExitButton()
@@ -53,25 +54,26 @@ public class MainMenu : MonoBehaviour
     public void OnVolumeValueChanged()
     {
         audioSource.volume = volumeSlider.value;
-        variables.musicVolume = volumeSlider.value;
+        PlayerPrefs.SetFloat("Music", volumeSlider.value);
         musicLevel.text = Mathf.FloorToInt(volumeSlider.value * 100) + " %";
     }
 
     public void OnEffectValueChanged()
     {
         effectSource.volume = effectSlider.value;
-        variables.effectVolume = effectSlider.value;
+        PlayerPrefs.SetFloat("Effects", effectSlider.value);
         effectlevel.text = Mathf.FloorToInt(effectSlider.value * 100) + " %";
     }
 
     public void OnToggleChanged() //Coefficient qui permet d'inverser la souris
     {
-        variables.inverted = variables.inverted == 1 ? -1 : 1;
+        inverted = inverted == 1 ? -1 : 1;
+        PlayerPrefs.SetInt("Inverted", inverted);
     }
 
 
     public void OnSensitivityChanged()
     {
-        variables.mouseSensitivity = sensitivitySlider.value;
+        PlayerPrefs.SetFloat("Sensi", sensitivitySlider.value);
     }
 }

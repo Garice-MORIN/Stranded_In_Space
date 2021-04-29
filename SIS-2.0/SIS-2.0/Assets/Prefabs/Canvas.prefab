@@ -7105,7 +7105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5210b17cdfc96c747960d4a742285d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variables: {fileID: 0}
   playerController: {fileID: 1261322305057248908, guid: a09238674b2738e41aee58fb5150650c,
     type: 3}
   settingsMenu: {fileID: 1287848706973472077}
@@ -7128,6 +7127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneId: 0
   serverOnly: 0
+  visible: 0
   m_AssetId: 
   hasSpawned: 0
 --- !u!1 &7574381065669075583

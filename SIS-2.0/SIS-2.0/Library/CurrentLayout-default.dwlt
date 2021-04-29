@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 875, y: 371}
+  m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -46,7 +46,7 @@ MonoBehaviour:
     y: 0
     width: 1536
     height: 781
-  m_MinSize: {x: 875, y: 371}
+  m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -113,10 +113,10 @@ MonoBehaviour:
     y: 30
     width: 1536
     height: 731
-  m_MinSize: {x: 478, y: 221}
-  m_MaxSize: {x: 12003, y: 8021}
+  m_MinSize: {x: 608, y: 392}
+  m_MaxSize: {x: 18003, y: 14042}
   vertical: 0
-  controlID: 87
+  controlID: 35
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -138,10 +138,10 @@ MonoBehaviour:
     y: 0
     width: 883
     height: 731
-  m_MinSize: {x: 101, y: 221}
-  m_MaxSize: {x: 4001, y: 8021}
+  m_MinSize: {x: 231, y: 392}
+  m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 112
+  controlID: 36
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -188,15 +188,15 @@ MonoBehaviour:
     y: 408
     width: 883
     height: 323
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 15}
+  m_MinSize: {x: 231, y: 271}
+  m_MaxSize: {x: 10001, y: 10021}
+  m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
   - {fileID: 15}
   - {fileID: 11}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -879,9 +879,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 277.81512, y: 206.77234, z: -31.293823}
+    m_Target: {x: 290.0558, y: 183.47147, z: -25.77848}
     speed: 2
-    m_Value: {x: 277.81512, y: 206.77234, z: -31.293823}
+    m_Value: {x: 290.0558, y: 183.47147, z: -25.77848}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -927,13 +927,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.073138155, y: 0.014404691, z: -0.0006918375, w: 0.9973094}
+    m_Target: {x: 0.011704282, y: 0.01591998, z: 0.00017821127, w: 0.99989665}
     speed: 2
-    m_Value: {x: 0.07313146, y: 0.014403372, z: -0.0006917742, w: 0.9972181}
+    m_Value: {x: 0.010203486, y: 0.015918233, z: 0.00020208124, w: 0.9998212}
   m_Size:
-    m_Target: 177.46463
+    m_Target: 180.2617
     speed: 2
-    m_Value: 177.46463
+    m_Value: 180.2617
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -997,19 +997,19 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Prefabs
   m_ViewMode: 1
   m_StartGridSize: 53
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Prefabs
   m_LastFoldersGridSize: 53
   m_LastProjectPath: C:\Users\garic\Documents\GitHub\Stranded_In_Space\SIS-2.0\SIS-2.0
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 47}
-    m_SelectedIDs: b84f0000
-    m_LastClickedID: 20408
+    m_SelectedIDs: 584b0000
+    m_LastClickedID: 19288
     m_ExpandedIDs: 00000000384b00003a4b00003c4b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1151,7 +1151,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: fcd6ffff18d7ffff8cddffffe2ddffffecddfffff4ddffff5afbffff
+      m_ExpandedIDs: 943affffb03affffd83fffff1c40ffff2040ffff2440ffff9240ffffae40ffff1847ffff6447ffff6a47ffff6e47ffff8ab4ffffa6b4ffff1abbffff70bbffff7abbffff82bbffff5afbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 

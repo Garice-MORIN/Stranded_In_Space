@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Mirror;
 
 public class PlayerController : NetworkBehaviour
@@ -23,6 +24,7 @@ public class PlayerController : NetworkBehaviour
     public LineRenderer shot;
     public GameObject pauseMenu;
     public GameObject scoreBoard;
+    public GameObject crosshair;
     private NetworkManager networkManager;
 
 
@@ -39,6 +41,7 @@ public class PlayerController : NetworkBehaviour
     {
         pauseMenu.SetActive(false);
         scoreBoard.SetActive(false);
+        crosshair.SetActive(true);
         networkManager = NetworkManager.singleton;
     }
 
@@ -158,6 +161,7 @@ public class PlayerController : NetworkBehaviour
             Cursor.visible = true;
         }
         pauseMenu.SetActive(!pauseMenu.activeSelf);
+        crosshair.SetActive(!crosshair.activeSelf);
     }
 
     //Change movement speed

@@ -13,7 +13,6 @@ ScriptsOnlyBuild:
     - PlayerController
     - TurretAI
     - TurretSpawning
-    - Variables
     Mirror.Components.dll:
     - Mirror.NetworkTransform
     - Mirror.NetworkTransformChild
@@ -232,8 +231,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11626}
     - Class: 114
       Script: {instanceID: 11894}
-    - Class: 114
-      Script: {instanceID: 12212}
     - Class: 114
       Script: {instanceID: 12228}
     - Class: 114
@@ -722,7 +719,7 @@ ScriptsOnlyBuild:
     className: MultiplexTransport
   - hash:
       serializedVersion: 2
-      Hash: 9c0ee62acd80fc5728e8fe95b95e4df2
+      Hash: 8f225721b0e2952446a870628af7b61c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraBis
@@ -758,7 +755,7 @@ ScriptsOnlyBuild:
     className: Music
   - hash:
       serializedVersion: 2
-      Hash: d8b435d2522e3aaba98593db2b6f5db3
+      Hash: 64e7d2757a1416b624e114e89604e5b2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MainMenu
@@ -884,7 +881,7 @@ ScriptsOnlyBuild:
     className: MatchGUI
   - hash:
       serializedVersion: 2
-      Hash: a32a8419ee2628b08c5d403366018415
+      Hash: 8936d590452964b3d65b4b88908e3b84
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -1220,7 +1217,7 @@ ScriptsOnlyBuild:
     className: ShootingTankBehaviour
   - hash:
       serializedVersion: 2
-      Hash: 1b1cc91ef84bfb573f1cd51e9e083ed4
+      Hash: 035defd08548ac1fab3058ba64caeba4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PauseMenu

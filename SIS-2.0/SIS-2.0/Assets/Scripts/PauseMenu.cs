@@ -7,7 +7,7 @@ using Mirror;
 
 public class PauseMenu : MonoBehaviour
 {
-    public Variables variables;
+    //public Variables variables;
     public PlayerController playerController;
     public GameObject settingsMenu;
     public GameObject commandMenu;
@@ -18,11 +18,12 @@ public class PauseMenu : MonoBehaviour
 
 
     void Start()
-    { 
+    {
         //audioSource = mainMenu.audioSource;
         //audioSlider = mainMenu.volumeSlider;
         //effectSource = mainMenu.effectSource;
         //effectSlider = mainMenu.effectSlider;
+        effectSource.volume = PlayerPrefs.GetFloat("EffectVolume");
     }
 
     public void _Debug()
@@ -78,13 +79,14 @@ public class PauseMenu : MonoBehaviour
     {
         //audioSource.volume = audioSlider.value;
         audioSource.volume = audioSlider.value;
-        variables.musicVolume = audioSlider.value;
+        PlayerPrefs.SetFloat("MusicVolume", audioSlider.value);
     }
 
     public void OnEffectValueChanged()
     {
         //effectSource.volume = effectSlider.value;
         effectSource.volume = effectSlider.value;
-        variables.effectVolume = effectSlider.value;
+        PlayerPrefs.SetFloat("MusicVolume", effectSlider.value);
+
     }
 }

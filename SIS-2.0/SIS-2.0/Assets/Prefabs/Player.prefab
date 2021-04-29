@@ -550,6 +550,8 @@ MonoBehaviour:
   shot: {fileID: -6029429672653255874}
   pauseMenu: {fileID: 6843274770675245019}
   scoreBoard: {fileID: 5244752591466690708}
+  crosshair: {fileID: 6774222978843265357, guid: 173a85b59070b3a46a80fee7d9997feb,
+    type: 3}
 --- !u!114 &1863195092447118859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -877,7 +879,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eba13a34c86b4f34aab106d5d4843cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variables: {fileID: 11400000, guid: 7fd782f8c73b5784c9ad2f525d97120c, type: 2}
   playerBody: {fileID: 4242103549478655201}
 --- !u!1001 &1460487194884685040
 PrefabInstance:

@@ -27,12 +27,6 @@ ScriptsOnlyBuild:
     - UnityEngine.ProBuilder.ProBuilderMesh
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -150,6 +144,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12274}
     - Class: 114
+      Script: {instanceID: 12364}
+    - Class: 114
       Script: {instanceID: 12944}
     - Class: 114
       Script: {instanceID: 13756}
@@ -157,6 +153,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13928}
     - Class: 114
       Script: {instanceID: 14186}
+    - Class: 114
+      Script: {instanceID: 14516}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 136
@@ -309,6 +307,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 4
       Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
     - Class: 21
       Script: {instanceID: 0}
     - Class: 23
@@ -324,6 +324,8 @@ ScriptsOnlyBuild:
     - Class: 64
       Script: {instanceID: 0}
     - Class: 65
+      Script: {instanceID: 0}
+    - Class: 81
       Script: {instanceID: 0}
     - Class: 82
       Script: {instanceID: 0}
@@ -346,11 +348,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11630}
     - Class: 114
+      Script: {instanceID: 12228}
+    - Class: 114
       Script: {instanceID: 12274}
     - Class: 114
       Script: {instanceID: 12364}
     - Class: 114
       Script: {instanceID: 12944}
+    - Class: 114
+      Script: {instanceID: 13436}
+    - Class: 114
+      Script: {instanceID: 13456}
+    - Class: 114
+      Script: {instanceID: 13756}
     - Class: 114
       Script: {instanceID: 13928}
     - Class: 114
@@ -359,9 +369,13 @@ ScriptsOnlyBuild:
       Script: {instanceID: 14516}
     - Class: 115
       Script: {instanceID: 0}
+    - Class: 135
+      Script: {instanceID: 0}
     - Class: 136
       Script: {instanceID: 0}
     - Class: 157
+      Script: {instanceID: 0}
+    - Class: 195
       Script: {instanceID: 0}
     - Class: 196
       Script: {instanceID: 0}
@@ -746,7 +760,7 @@ ScriptsOnlyBuild:
     className: Music
   - hash:
       serializedVersion: 2
-      Hash: c7a623399eba8e8d97d1579a19817b10
+      Hash: d8b435d2522e3aaba98593db2b6f5db3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MainMenu
@@ -872,7 +886,7 @@ ScriptsOnlyBuild:
     className: MatchGUI
   - hash:
       serializedVersion: 2
-      Hash: a150b68cc565d54950d0d42e8c32cf1c
+      Hash: a32a8419ee2628b08c5d403366018415
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -1094,7 +1108,7 @@ ScriptsOnlyBuild:
     className: ApiUpdater
   - hash:
       serializedVersion: 2
-      Hash: 3b8b0cfb25ffc88bc6e23cedf971de41
+      Hash: 6051a97e34d0d96ed16d3787be11b3ff
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TurretAI
@@ -1106,7 +1120,7 @@ ScriptsOnlyBuild:
     className: NetworkLobbyPlayer
   - hash:
       serializedVersion: 2
-      Hash: 58cc5c5f7f62210286dc05fef2726bd6
+      Hash: f2604ed9bf92a6ed4b6fb04f4e8713e6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnemyMovement

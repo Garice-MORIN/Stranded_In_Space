@@ -24,21 +24,26 @@ public class EnemyMovement : MonoBehaviour
     public void Update()
     {
         // Attaque la tour si l'ennemi est assez près
-        CheckAttack();
+        if (navMesh.remainingDistance <= 1.5f)
+        {
+            CheckAttack();
+        }
         CheckSlow();
     }
 
     void CheckAttack(){
-        if(attackCooldown <= 0){
+        if (attackCooldown <= 0)
+        {
             AttackTower();
             attackCooldown = 1;
         }
-        else{
+        else
+        {
             attackCooldown -= Time.deltaTime;
         }
     }
     void AttackTower(){
-        colliders = Physics.OverlapSphere(enemyPosition.position, 2.0f, mask);
+        colliders = Physics.OverlapSphere(enemyPosition.position, 1.5f, mask);
         foreach(var obj in colliders){
             obj.GetComponent<Health>().TakeDamage(damage);
         }
